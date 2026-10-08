@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { ScoreBadge } from "@/modules/signals/score-badge";
 import { filterOptions, listQueue, portfolioStats } from "@/modules/queue/queries";
 
 export const dynamic = "force-dynamic";
@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 const usd = (n: number) => `$${Math.round(n).toLocaleString("en-US")}`;
 const stateStyle: Record<string, string> = {
   pending: "bg-secondary text-foreground",
-  approved: "bg-green-100 text-green-800",
+  approved: "bg-emerald-700/10 text-emerald-800",
   dismissed: "bg-muted text-muted-foreground",
 };
 
@@ -23,7 +23,11 @@ export default async function QueuePage({ searchParams }: PageProps<"/">) {
   const [rows, stats, opts] = await Promise.all([listQueue(f), portfolioStats(), filterOptions()]);
 
   return (
-    <main className="mx-auto w-full max-w-6xl flex-1 space-y-6 px-6 py-8">
+    <main className="mx-auto w-full max-w-6xl flex-1 space-y-6 px-6 py-10">
+      <div>
+        <h1 className="text-3xl font-semibold tracking-tight">Accounts at risk</h1>
+        <p className="text-muted-foreground">Ranked by risk score, then ARR, then renewal date.</p>
+      </div>
       <div className="grid gap-4 sm:grid-cols-4">
         <Stat label="Accounts flagged (score ≥ 5)" value={stats.flagged.toLocaleString()} />
         <Stat label="ARR flagged" value={usd(stats.arrFlagged)} />
@@ -36,7 +40,7 @@ export default async function QueuePage({ searchParams }: PageProps<"/">) {
         <Select name="region" label="Region" options={opts.region} value={f.region} />
         <Select name="tier" label="Tier" options={opts.tier} value={f.tier} />
         <Select name="state" label="State" options={["pending", "approved", "dismissed"]} value={f.state} />
-        <button className="bg-primary text-primary-foreground rounded-md px-4 py-1.5 font-medium">
+        <button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-1.5 font-medium transition-colors">
           Filter
         </button>
         <Link href="/" className="text-muted-foreground py-1.5 hover:underline">
@@ -44,9 +48,9 @@ export default async function QueuePage({ searchParams }: PageProps<"/">) {
         </Link>
       </form>
 
-      <div className="overflow-hidden rounded-lg border">
-        <table className="w-full text-sm">
-          <thead className="bg-muted text-muted-foreground text-left text-xs uppercase">
+      <div className="bg-card overflow-hidden rounded-xl border shadow-sm">
+        <table className="w-full text-base">
+          <thead className="bg-muted/60 text-muted-foreground text-left text-xs tracking-wider uppercase">
             <tr>
               <th className="p-3">Customer</th>
               <th className="p-3 text-right">ARR</th>
@@ -70,7 +74,7 @@ export default async function QueuePage({ searchParams }: PageProps<"/">) {
                 <td className="p-3 text-right tabular-nums">{usd(r.arr)}</td>
                 <td className="p-3 tabular-nums">{r.nextRenewal ?? "—"}</td>
                 <td className="p-3 text-right">
-                  <Badge className="tabular-nums">{r.score}</Badge>
+                  <ScoreBadge score={r.score} />
                 </td>
                 <td className="text-muted-foreground p-3">{r.reasons[0]?.text ?? "—"}</td>
                 <td className="p-3">
@@ -102,7 +106,7 @@ function Stat({ label, value }: { label: string; value: string }) {
   return (
     <Card>
       <CardContent className="space-y-1 py-4">
-        <div className="text-primary text-2xl font-bold tabular-nums">{value}</div>
+        <div className="text-3xl font-semibold tabular-nums">{value}</div>
         <div className="text-muted-foreground text-xs">{label}</div>
       </CardContent>
     </Card>

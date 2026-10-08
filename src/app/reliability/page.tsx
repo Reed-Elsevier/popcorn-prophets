@@ -9,8 +9,8 @@ const rows = [
 // Static numbers from the offline pandas backtest in PRD section 2 (precomputed, disclosed).
 export default function ReliabilityPage() {
   return (
-    <main className="mx-auto w-full max-w-3xl flex-1 space-y-4 px-6 py-8">
-      <h1 className="text-2xl font-bold">Reliability</h1>
+    <main className="mx-auto w-full max-w-3xl flex-1 space-y-4 px-6 py-10">
+      <h1 className="text-3xl font-semibold tracking-tight">Reliability</h1>
       <p className="text-muted-foreground text-sm">
         Precomputed offline backtest (monthly as-of dates 2024-04 to 2026-06, label: churn within 90 days, base
         rate 1.6%). Static, not recomputed live.

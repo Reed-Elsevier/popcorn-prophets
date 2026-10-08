@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
+import { ScoreBadge } from "@/modules/signals/score-badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BriefPanel } from "@/modules/ai-brief/components/brief-panel";
 import { UsageChart } from "@/modules/queue/components/usage-chart";
@@ -15,14 +16,14 @@ export default async function AccountPage({ params }: PageProps<"/accounts/[id]"
   const { customer: c, health: h } = a;
 
   return (
-    <main className="mx-auto w-full max-w-6xl flex-1 space-y-6 px-6 py-8">
+    <main className="mx-auto w-full max-w-6xl flex-1 space-y-6 px-6 py-10">
       <div>
         <Link href="/" className="text-muted-foreground text-sm hover:underline">
           ← Queue
         </Link>
         <div className="mt-2 flex flex-wrap items-center gap-3">
-          <h1 className="text-2xl font-bold">{c.name}</h1>
-          <Badge>Score {h.score}</Badge>
+          <h1 className="text-3xl font-semibold tracking-tight">{c.name}</h1>
+          <ScoreBadge score={h.score} />
         </div>
         <p className="text-muted-foreground text-sm">
           {c.segment} · {c.region} · {c.tier} · owner {c.ownerId ?? "—"} · ARR ${Math.round(h.arr).toLocaleString()} ·

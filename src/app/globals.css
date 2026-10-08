@@ -7,7 +7,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-serif), Georgia, "Times New Roman", serif;
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -117,19 +117,28 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-/* REPH / RELX theme: orange primary, warm neutrals */
+/* REPH / RELX theme: muted terracotta on warm paper, serif type */
 :root {
-  --primary: oklch(0.7 0.19 50);
-  --primary-foreground: oklch(0.2 0.03 50);
-  --ring: oklch(0.7 0.19 50);
-  --accent: oklch(0.96 0.03 65);
-  --accent-foreground: oklch(0.35 0.1 50);
-  --secondary: oklch(0.96 0.015 70);
-  --muted: oklch(0.965 0.012 70);
-  --chart-1: oklch(0.7 0.19 50);
-  --chart-2: oklch(0.55 0.15 40);
-  --chart-3: oklch(0.8 0.15 80);
-  --sidebar-primary: oklch(0.7 0.19 50);
+  --background: oklch(0.985 0.007 80);
+  --foreground: oklch(0.24 0.02 50);
+  --card: oklch(0.995 0.004 80);
+  --card-foreground: oklch(0.24 0.02 50);
+  --popover: oklch(0.995 0.004 80);
+  --primary: oklch(0.56 0.115 48);
+  --primary-foreground: oklch(0.985 0.007 80);
+  --ring: oklch(0.56 0.115 48 / 50%);
+  --accent: oklch(0.95 0.025 70);
+  --accent-foreground: oklch(0.35 0.08 48);
+  --secondary: oklch(0.945 0.012 75);
+  --secondary-foreground: oklch(0.3 0.03 50);
+  --muted: oklch(0.955 0.01 78);
+  --muted-foreground: oklch(0.5 0.02 60);
+  --border: oklch(0.9 0.012 75);
+  --input: oklch(0.9 0.012 75);
+  --chart-1: oklch(0.56 0.115 48);
+  --chart-2: oklch(0.45 0.08 40);
+  --chart-3: oklch(0.75 0.1 75);
+  --sidebar-primary: oklch(0.56 0.115 48);
 }
 
 @layer base {

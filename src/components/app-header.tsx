@@ -9,21 +9,21 @@ const nav = [
 
 export function AppHeader() {
   return (
-    <header className="bg-primary text-primary-foreground">
-      <div className="mx-auto flex h-14 w-full max-w-6xl items-center gap-6 px-6">
-        <Link href="/" className="flex items-center gap-2 font-bold tracking-tight">
-          <span className="inline-block size-3 rounded-full bg-white" />
-          Renewal Rescue Desk
+    <header className="bg-card border-b">
+      <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-8 px-6">
+        <Link href="/" className="flex items-baseline gap-2">
+          <span className="text-primary text-xl font-semibold tracking-tight">Renewal Rescue Desk</span>
         </Link>
-        <nav className="flex flex-1 items-center gap-4 text-sm font-medium">
+        <nav className="text-muted-foreground flex flex-1 items-center gap-6 text-base">
           {nav.map((item) => (
-            <Link key={item.href} href={item.href} className="opacity-80 hover:opacity-100">
+            <Link key={item.href} href={item.href} className="hover:text-foreground transition-colors">
               {item.label}
             </Link>
           ))}
         </nav>
-        <span className="text-xs opacity-80">Data as of {AS_OF}</span>
+        <span className="text-muted-foreground text-sm italic">Data as of {AS_OF}</span>
       </div>
+      <div className="bg-primary/70 h-0.5" />
     </header>
   );
 }
