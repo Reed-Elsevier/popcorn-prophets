@@ -1,0 +1,24 @@
+.env
+.env.*
+!.env.example
+data/*
+!data/.gitkeep
+*.log
+.claude/
+.cursor/
+.vscode/mcp.json
+.mcp.json
+.github/skills
+.opencode/
+opencode.json
+.gemini/
+.agent/
+
+# next.js
+node_modules
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+*.pem
