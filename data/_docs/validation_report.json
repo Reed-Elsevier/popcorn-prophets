@@ -1,0 +1,1395 @@
+{
+  "tables": {
+    "sites": {
+      "domain": "A_workforce",
+      "rows": 2,
+      "target_rows_scale_1": 2,
+      "pk_duplicates": 0,
+      "fk_violations": {},
+      "date_order_violations": {}
+    },
+    "divisions": {
+      "domain": "A_workforce",
+      "rows": 5,
+      "target_rows_scale_1": 5,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "center_site_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "departments": {
+      "domain": "A_workforce",
+      "rows": 40,
+      "target_rows_scale_1": 40,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "division_id": 0,
+        "primary_site_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "roles": {
+      "domain": "A_workforce",
+      "rows": 441,
+      "target_rows_scale_1": 441,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "department_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "employees": {
+      "domain": "A_workforce",
+      "rows": 5000,
+      "target_rows_scale_1": 25000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "site_id": 0,
+        "division_id": 0,
+        "department_id": 0,
+        "role_id": 0,
+        "manager_id": 0,
+        "team_id": 0
+      },
+      "date_order_violations": {
+        "hire_date<=exit_date": 0
+      }
+    },
+    "teams": {
+      "domain": "A_workforce",
+      "rows": 120,
+      "target_rows_scale_1": 600,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "department_id": 0,
+        "division_id": 0,
+        "site_id": 0,
+        "team_lead_employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "skill_taxonomy": {
+      "domain": "A_workforce",
+      "rows": 36,
+      "target_rows_scale_1": 36,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "parent_taxonomy_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "skills": {
+      "domain": "A_workforce",
+      "rows": 800,
+      "target_rows_scale_1": 800,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "cluster_id": 0,
+        "domain_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "employee_skills": {
+      "domain": "A_workforce",
+      "rows": 38429,
+      "target_rows_scale_1": 200000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "employee_id": 0,
+        "skill_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "learning_content": {
+      "domain": "A_workforce",
+      "rows": 1600,
+      "target_rows_scale_1": 8000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "skill_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "learning_paths": {
+      "domain": "A_workforce",
+      "rows": 150,
+      "target_rows_scale_1": 150,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "owner_department_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "learning_path_items": {
+      "domain": "A_workforce",
+      "rows": 1000,
+      "target_rows_scale_1": 1000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "path_id": 0,
+        "content_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "learning_records": {
+      "domain": "A_workforce",
+      "rows": 50000,
+      "target_rows_scale_1": 250000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "employee_id": 0,
+        "content_id": 0,
+        "path_id": 0
+      },
+      "date_order_violations": {
+        "enrolled_at<=completed_at": 0
+      }
+    },
+    "ai_capability_levels": {
+      "domain": "A_workforce",
+      "rows": 4000,
+      "target_rows_scale_1": 20000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "employee_id": 0,
+        "recommended_path_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "career_paths": {
+      "domain": "A_workforce",
+      "rows": 481,
+      "target_rows_scale_1": 481,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "from_role_id": 0,
+        "to_role_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "internal_mobility": {
+      "domain": "A_workforce",
+      "rows": 1200,
+      "target_rows_scale_1": 6000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "employee_id": 0,
+        "from_role_id": 0,
+        "to_role_id": 0,
+        "from_team_id": 0,
+        "to_team_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "job_requisitions": {
+      "domain": "A_workforce",
+      "rows": 600,
+      "target_rows_scale_1": 3000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "role_id": 0,
+        "department_id": 0,
+        "team_id": 0,
+        "site_id": 0,
+        "hiring_manager_id": 0
+      },
+      "date_order_violations": {
+        "opened_date<=filled_date": 0
+      }
+    },
+    "requisition_skills": {
+      "domain": "A_workforce",
+      "rows": 1794,
+      "target_rows_scale_1": 1794,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "requisition_id": 0,
+        "skill_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "process_definitions": {
+      "domain": "I_process",
+      "rows": 40,
+      "target_rows_scale_1": 40,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "division_id": 0,
+        "owner_department_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "process_activities": {
+      "domain": "I_process",
+      "rows": 255,
+      "target_rows_scale_1": 255,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "process_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "applications": {
+      "domain": "H_technology",
+      "rows": 450,
+      "target_rows_scale_1": 450,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "division_id": 0,
+        "owner_team_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "ai_models": {
+      "domain": "J_ai_portfolio",
+      "rows": 150,
+      "target_rows_scale_1": 150,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "owner_team_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "model_versions": {
+      "domain": "J_ai_portfolio",
+      "rows": 345,
+      "target_rows_scale_1": 345,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "model_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "ai_use_cases": {
+      "domain": "J_ai_portfolio",
+      "rows": 600,
+      "target_rows_scale_1": 600,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "division_id": 0,
+        "process_id": 0,
+        "owner_team_id": 0,
+        "sponsor_employee_id": 0,
+        "product_owner_employee_id": 0,
+        "model_id": 0
+      },
+      "date_order_violations": {
+        "idea_date<=poc_date": 0,
+        "poc_date<=pilot_date": 0,
+        "pilot_date<=scaled_date": 0
+      }
+    },
+    "ai_use_case_kpis": {
+      "domain": "J_ai_portfolio",
+      "rows": 600,
+      "target_rows_scale_1": 600,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "use_case_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "ai_governance_reviews": {
+      "domain": "J_ai_portfolio",
+      "rows": 600,
+      "target_rows_scale_1": 3000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "use_case_id": 0,
+        "reviewer_employee_id": 0
+      },
+      "date_order_violations": {
+        "submitted_at<=completed_at": 0
+      }
+    },
+    "projects": {
+      "domain": "J_ai_portfolio",
+      "rows": 4000,
+      "target_rows_scale_1": 20000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "use_case_id": 0,
+        "owner_team_id": 0,
+        "division_id": 0,
+        "pm_employee_id": 0
+      },
+      "date_order_violations": {
+        "start_date<=planned_end_date": 0,
+        "start_date<=actual_end_date": 0
+      }
+    },
+    "project_members": {
+      "domain": "J_ai_portfolio",
+      "rows": 19382,
+      "target_rows_scale_1": 100000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "project_id": 0,
+        "employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "project_tasks": {
+      "domain": "J_ai_portfolio",
+      "rows": 60000,
+      "target_rows_scale_1": 300000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "project_id": 0,
+        "assignee_employee_id": 0
+      },
+      "date_order_violations": {
+        "created_at<=completed_at": 0
+      }
+    },
+    "milestones": {
+      "domain": "J_ai_portfolio",
+      "rows": 16000,
+      "target_rows_scale_1": 16000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "project_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "project_risks": {
+      "domain": "J_ai_portfolio",
+      "rows": 9000,
+      "target_rows_scale_1": 45000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "project_id": 0,
+        "owner_employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "innovation_ideas": {
+      "domain": "J_ai_portfolio",
+      "rows": 3000,
+      "target_rows_scale_1": 15000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "submitted_by_employee_id": 0,
+        "team_id": 0,
+        "linked_use_case_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "institutions": {
+      "domain": "B_publishing",
+      "rows": 3000,
+      "target_rows_scale_1": 15000,
+      "pk_duplicates": 0,
+      "fk_violations": {},
+      "date_order_violations": {}
+    },
+    "authors": {
+      "domain": "B_publishing",
+      "rows": 80000,
+      "target_rows_scale_1": 400000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "primary_institution_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "author_affiliations": {
+      "domain": "B_publishing",
+      "rows": 104053,
+      "target_rows_scale_1": 104053,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "author_id": 0,
+        "institution_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "journals": {
+      "domain": "B_publishing",
+      "rows": 500,
+      "target_rows_scale_1": 2500,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "managing_team_id": 0,
+        "editor_in_chief_author_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "manuscripts": {
+      "domain": "B_publishing",
+      "rows": 60000,
+      "target_rows_scale_1": 300000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "journal_id": 0,
+        "corresponding_author_id": 0,
+        "handling_editor_author_id": 0,
+        "ops_coordinator_employee_id": 0
+      },
+      "date_order_violations": {
+        "submitted_at<=first_decision_at": 0,
+        "first_decision_at<=final_decision_at": 0
+      }
+    },
+    "peer_review_assignments": {
+      "domain": "B_publishing",
+      "rows": 155283,
+      "target_rows_scale_1": 900000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "manuscript_id": 0,
+        "reviewer_author_id": 0
+      },
+      "date_order_violations": {
+        "invited_at<=responded_at": 0,
+        "responded_at<=review_submitted_at": 0
+      }
+    },
+    "research_papers_published": {
+      "domain": "B_publishing",
+      "rows": 18085,
+      "target_rows_scale_1": 100000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "manuscript_id": 0,
+        "journal_id": 0,
+        "institution_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "paper_authors": {
+      "domain": "B_publishing",
+      "rows": 81873,
+      "target_rows_scale_1": 81873,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "paper_id": 0,
+        "author_id": 0,
+        "affiliation_institution_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "citations": {
+      "domain": "B_publishing",
+      "rows": 295594,
+      "target_rows_scale_1": 1500000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "citing_paper_id": 0,
+        "cited_paper_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "content_production_jobs": {
+      "domain": "B_publishing",
+      "rows": 49998,
+      "target_rows_scale_1": 250000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "paper_id": 0,
+        "team_id": 0,
+        "assignee_employee_id": 0
+      },
+      "date_order_violations": {
+        "started_at<=completed_at": 0
+      }
+    },
+    "xml_conversion_defects": {
+      "domain": "B_publishing",
+      "rows": 36000,
+      "target_rows_scale_1": 180000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "job_id": 0,
+        "paper_id": 0
+      },
+      "date_order_violations": {
+        "detected_at<=fixed_at": 0
+      }
+    },
+    "research_integrity_flags": {
+      "domain": "B_publishing",
+      "rows": 1200,
+      "target_rows_scale_1": 6000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "paper_id": 0,
+        "manuscript_id": 0,
+        "assigned_employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "jurisdictions": {
+      "domain": "C_legal",
+      "rows": 60,
+      "target_rows_scale_1": 60,
+      "pk_duplicates": 0,
+      "fk_violations": {},
+      "date_order_violations": {}
+    },
+    "courts": {
+      "domain": "C_legal",
+      "rows": 900,
+      "target_rows_scale_1": 900,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "jurisdiction_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "practice_areas": {
+      "domain": "C_legal",
+      "rows": 80,
+      "target_rows_scale_1": 80,
+      "pk_duplicates": 0,
+      "fk_violations": {},
+      "date_order_violations": {}
+    },
+    "legal_documents": {
+      "domain": "C_legal",
+      "rows": 40000,
+      "target_rows_scale_1": 200000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "jurisdiction_id": 0,
+        "court_id": 0,
+        "practice_area_id": 0
+      },
+      "date_order_violations": {
+        "decision_or_enacted_date<=last_updated_at": 0
+      }
+    },
+    "legal_citations": {
+      "domain": "C_legal",
+      "rows": 159981,
+      "target_rows_scale_1": 800000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "citing_doc_id": 0,
+        "cited_doc_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "editorial_tasks": {
+      "domain": "C_legal",
+      "rows": 80000,
+      "target_rows_scale_1": 400000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "doc_id": 0,
+        "team_id": 0,
+        "editor_employee_id": 0,
+        "model_id": 0
+      },
+      "date_order_violations": {
+        "created_at<=completed_at": 0
+      }
+    },
+    "regulatory_updates": {
+      "domain": "C_legal",
+      "rows": 8000,
+      "target_rows_scale_1": 40000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "jurisdiction_id": 0,
+        "practice_area_id": 0
+      },
+      "date_order_violations": {
+        "published_at<=captured_at": 0
+      }
+    },
+    "regulatory_update_impacts": {
+      "domain": "C_legal",
+      "rows": 20065,
+      "target_rows_scale_1": 20065,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "update_id": 0,
+        "doc_id": 0,
+        "editor_employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "business_entities": {
+      "domain": "D_risk",
+      "rows": 10000,
+      "target_rows_scale_1": 50000,
+      "pk_duplicates": 0,
+      "fk_violations": {},
+      "date_order_violations": {}
+    },
+    "ownership_links": {
+      "domain": "D_risk",
+      "rows": 23871,
+      "target_rows_scale_1": 120000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "parent_entity_id": 0,
+        "child_entity_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "products": {
+      "domain": "F_customer",
+      "rows": 120,
+      "target_rows_scale_1": 120,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "division_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "individuals": {
+      "domain": "D_risk",
+      "rows": 60000,
+      "target_rows_scale_1": 300000,
+      "pk_duplicates": 0,
+      "fk_violations": {},
+      "date_order_violations": {}
+    },
+    "addresses": {
+      "domain": "D_risk",
+      "rows": 66000,
+      "target_rows_scale_1": 330000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "individual_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "identity_attributes": {
+      "domain": "D_risk",
+      "rows": 180026,
+      "target_rows_scale_1": 180026,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "individual_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "devices": {
+      "domain": "D_risk",
+      "rows": 80000,
+      "target_rows_scale_1": 400000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "individual_id": 0
+      },
+      "date_order_violations": {
+        "first_seen_at<=last_seen_at": 0
+      }
+    },
+    "accounts": {
+      "domain": "D_risk",
+      "rows": 100000,
+      "target_rows_scale_1": 500000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "individual_id": 0,
+        "entity_id": 0,
+        "client_customer_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "transactions": {
+      "domain": "D_risk",
+      "rows": 200000,
+      "target_rows_scale_1": 1000000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "account_id": 0,
+        "counterparty_account_id": 0,
+        "device_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "watchlists": {
+      "domain": "D_risk",
+      "rows": 4006,
+      "target_rows_scale_1": 20000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "individual_id": 0,
+        "entity_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "alert_rules": {
+      "domain": "D_risk",
+      "rows": 40,
+      "target_rows_scale_1": 40,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "model_id": 0,
+        "owner_team_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "risk_alerts": {
+      "domain": "D_risk",
+      "rows": 30000,
+      "target_rows_scale_1": 150000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "rule_id": 0,
+        "txn_id": 0,
+        "account_id": 0,
+        "analyst_employee_id": 0
+      },
+      "date_order_violations": {
+        "created_at<=closed_at": 0
+      }
+    },
+    "kyc_cases": {
+      "domain": "D_risk",
+      "rows": 16000,
+      "target_rows_scale_1": 80000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "subject_individual_id": 0,
+        "subject_entity_id": 0,
+        "analyst_employee_id": 0,
+        "client_customer_id": 0
+      },
+      "date_order_violations": {
+        "opened_at<=closed_at": 0
+      }
+    },
+    "investigations": {
+      "domain": "D_risk",
+      "rows": 2132,
+      "target_rows_scale_1": 25000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "alert_id": 0,
+        "kyc_case_id": 0,
+        "lead_analyst_employee_id": 0
+      },
+      "date_order_violations": {
+        "opened_at<=closed_at": 0
+      }
+    },
+    "analyst_actions": {
+      "domain": "D_risk",
+      "rows": 120042,
+      "target_rows_scale_1": 600000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "investigation_id": 0,
+        "analyst_employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "knowledge_articles": {
+      "domain": "K_knowledge",
+      "rows": 10040,
+      "target_rows_scale_1": 50000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "division_id": 0,
+        "product_id": 0,
+        "app_id": 0,
+        "owner_team_id": 0,
+        "author_employee_id": 0
+      },
+      "date_order_violations": {
+        "created_at<=last_reviewed_at": 0
+      }
+    },
+    "knowledge_article_versions": {
+      "domain": "K_knowledge",
+      "rows": 30170,
+      "target_rows_scale_1": 30170,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "article_id": 0,
+        "edited_by_employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "sops": {
+      "domain": "K_knowledge",
+      "rows": 600,
+      "target_rows_scale_1": 3000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "article_id": 0,
+        "process_id": 0,
+        "owner_employee_id": 0
+      },
+      "date_order_violations": {
+        "effective_date<=review_due_date": 0
+      }
+    },
+    "subscriptions": {
+      "domain": "F_customer",
+      "rows": 30000,
+      "target_rows_scale_1": 150000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "product_id": 0,
+        "customer_id": 0
+      },
+      "date_order_violations": {
+        "start_date<=end_date": 0
+      }
+    },
+    "customers": {
+      "domain": "F_customer",
+      "rows": 12000,
+      "target_rows_scale_1": 60000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "institution_id": 0,
+        "entity_id": 0,
+        "primary_division_id": 0,
+        "account_owner_employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "churn_events": {
+      "domain": "F_customer",
+      "rows": 1600,
+      "target_rows_scale_1": 8000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "customer_id": 0,
+        "primary_subscription_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "product_usage_monthly": {
+      "domain": "F_customer",
+      "rows": 535637,
+      "target_rows_scale_1": 3000000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "subscription_id": 0,
+        "customer_id": 0,
+        "product_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "support_cases": {
+      "domain": "F_customer",
+      "rows": 102400,
+      "target_rows_scale_1": 500000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "customer_id": 0,
+        "product_id": 0,
+        "division_id": 0,
+        "team_id": 0,
+        "agent_employee_id": 0,
+        "kb_article_id": 0
+      },
+      "date_order_violations": {
+        "created_at<=first_response_at": 0,
+        "created_at<=resolved_at": 0
+      }
+    },
+    "case_interactions": {
+      "domain": "F_customer",
+      "rows": 390944,
+      "target_rows_scale_1": 2000000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "case_id": 0,
+        "employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "feature_requests": {
+      "domain": "F_customer",
+      "rows": 5000,
+      "target_rows_scale_1": 25000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "customer_id": 0,
+        "product_id": 0,
+        "case_id": 0,
+        "linked_project_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "renewal_opportunities": {
+      "domain": "F_customer",
+      "rows": 12000,
+      "target_rows_scale_1": 60000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "subscription_id": 0,
+        "customer_id": 0,
+        "owner_employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "events": {
+      "domain": "E_events",
+      "rows": 80,
+      "target_rows_scale_1": 400,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "organizer_team_id": 0
+      },
+      "date_order_violations": {
+        "start_date<=end_date": 0
+      }
+    },
+    "event_sessions": {
+      "domain": "E_events",
+      "rows": 1585,
+      "target_rows_scale_1": 1585,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "event_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "exhibitors": {
+      "domain": "E_events",
+      "rows": 6000,
+      "target_rows_scale_1": 30000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "event_id": 0,
+        "entity_id": 0,
+        "account_manager_employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "visitors": {
+      "domain": "E_events",
+      "rows": 100000,
+      "target_rows_scale_1": 500000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "company_entity_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "registrations": {
+      "domain": "E_events",
+      "rows": 131983,
+      "target_rows_scale_1": 700000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "visitor_id": 0,
+        "event_id": 0
+      },
+      "date_order_violations": {
+        "registered_at<=checked_in_at": 0
+      }
+    },
+    "badge_scans": {
+      "domain": "E_events",
+      "rows": 400000,
+      "target_rows_scale_1": 2000000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "registration_id": 0,
+        "exhibitor_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "leads": {
+      "domain": "E_events",
+      "rows": 60000,
+      "target_rows_scale_1": 300000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "exhibitor_id": 0,
+        "visitor_id": 0,
+        "event_id": 0,
+        "scan_id": 0,
+        "converted_customer_id": 0
+      },
+      "date_order_violations": {
+        "captured_at<=converted_at": 0
+      }
+    },
+    "session_attendance": {
+      "domain": "E_events",
+      "rows": 115953,
+      "target_rows_scale_1": 600000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "registration_id": 0,
+        "session_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "event_feedback": {
+      "domain": "E_events",
+      "rows": 40000,
+      "target_rows_scale_1": 200000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "registration_id": 0,
+        "event_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "cost_centers": {
+      "domain": "G_finance",
+      "rows": 57,
+      "target_rows_scale_1": 57,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "department_id": 0,
+        "division_id": 0,
+        "site_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "suppliers": {
+      "domain": "G_finance",
+      "rows": 2400,
+      "target_rows_scale_1": 12000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "entity_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "supplier_enrollment_requests": {
+      "domain": "G_finance",
+      "rows": 3000,
+      "target_rows_scale_1": 15000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "supplier_id": 0,
+        "requested_by_employee_id": 0
+      },
+      "date_order_violations": {
+        "submitted_at<=decided_at": 0
+      }
+    },
+    "purchase_orders": {
+      "domain": "G_finance",
+      "rows": 40000,
+      "target_rows_scale_1": 200000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "supplier_id": 0,
+        "cost_center_id": 0,
+        "requester_employee_id": 0,
+        "approver_employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "invoices": {
+      "domain": "G_finance",
+      "rows": 120000,
+      "target_rows_scale_1": 600000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "supplier_id": 0,
+        "po_id": 0,
+        "processor_employee_id": 0
+      },
+      "date_order_violations": {
+        "invoice_date<=due_date": 0
+      }
+    },
+    "invoice_lines": {
+      "domain": "G_finance",
+      "rows": 406814,
+      "target_rows_scale_1": 2000000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "invoice_id": 0,
+        "cost_center_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "invoice_exceptions": {
+      "domain": "G_finance",
+      "rows": 23400,
+      "target_rows_scale_1": 90000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "invoice_id": 0,
+        "resolver_employee_id": 0
+      },
+      "date_order_violations": {
+        "raised_at<=resolved_at": 0
+      }
+    },
+    "payments": {
+      "domain": "G_finance",
+      "rows": 107249,
+      "target_rows_scale_1": 550000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "invoice_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "opex_budget_vs_actual": {
+      "domain": "G_finance",
+      "rows": 3249,
+      "target_rows_scale_1": 3249,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "cost_center_id": 0,
+        "division_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "changes": {
+      "domain": "H_technology",
+      "rows": 8000,
+      "target_rows_scale_1": 40000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "app_id": 0,
+        "requested_by_employee_id": 0
+      },
+      "date_order_violations": {
+        "requested_at<=approved_at": 0,
+        "approved_at<=implemented_at": 0
+      }
+    },
+    "problems": {
+      "domain": "H_technology",
+      "rows": 800,
+      "target_rows_scale_1": 4000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "app_id": 0
+      },
+      "date_order_violations": {
+        "opened_at<=closed_at": 0
+      }
+    },
+    "it_tickets": {
+      "domain": "H_technology",
+      "rows": 60000,
+      "target_rows_scale_1": 300000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "app_id": 0,
+        "requester_employee_id": 0,
+        "assignment_group_team_id": 0,
+        "assignee_employee_id": 0,
+        "kb_article_id": 0
+      },
+      "date_order_violations": {
+        "created_at<=resolved_at": 0
+      }
+    },
+    "incidents": {
+      "domain": "H_technology",
+      "rows": 5000,
+      "target_rows_scale_1": 25000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "ticket_id": 0,
+        "app_id": 0,
+        "caused_by_change_id": 0,
+        "problem_id": 0
+      },
+      "date_order_violations": {
+        "started_at<=detected_at": 0,
+        "detected_at<=resolved_at": 0
+      }
+    },
+    "access_requests": {
+      "domain": "H_technology",
+      "rows": 10000,
+      "target_rows_scale_1": 50000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "requester_employee_id": 0,
+        "app_id": 0
+      },
+      "date_order_violations": {
+        "requested_at<=completed_at": 0
+      }
+    },
+    "access_request_approvals": {
+      "domain": "H_technology",
+      "rows": 27590,
+      "target_rows_scale_1": 27590,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "access_request_id": 0,
+        "approver_employee_id": 0
+      },
+      "date_order_violations": {
+        "assigned_at<=decided_at": 0
+      }
+    },
+    "system_events": {
+      "domain": "H_technology",
+      "rows": 999991,
+      "target_rows_scale_1": 5000000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "app_id": 0,
+        "user_employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "process_event_log": {
+      "domain": "I_process",
+      "rows": 1670158,
+      "target_rows_scale_1": 8000000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "process_id": 0,
+        "activity_id": 0,
+        "resource_employee_id": 0,
+        "system_app_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "automation_candidates": {
+      "domain": "I_process",
+      "rows": 18,
+      "target_rows_scale_1": 18,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "process_id": 0,
+        "activity_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "ai_usage_events": {
+      "domain": "J_ai_portfolio",
+      "rows": 400000,
+      "target_rows_scale_1": 2000000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "employee_id": 0,
+        "use_case_id": 0,
+        "model_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "prompts_library": {
+      "domain": "J_ai_portfolio",
+      "rows": 1000,
+      "target_rows_scale_1": 5000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "author_employee_id": 0,
+        "use_case_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "ai_feedback": {
+      "domain": "J_ai_portfolio",
+      "rows": 60000,
+      "target_rows_scale_1": 300000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "usage_event_id": 0,
+        "employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "documents": {
+      "domain": "K_knowledge",
+      "rows": 8000,
+      "target_rows_scale_1": 40000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "project_id": 0,
+        "author_employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "meetings": {
+      "domain": "K_knowledge",
+      "rows": 12000,
+      "target_rows_scale_1": 60000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "project_id": 0,
+        "team_id": 0,
+        "organizer_employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "action_items": {
+      "domain": "K_knowledge",
+      "rows": 30000,
+      "target_rows_scale_1": 150000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "meeting_id": 0,
+        "owner_employee_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "chat_channels": {
+      "domain": "K_knowledge",
+      "rows": 399,
+      "target_rows_scale_1": 399,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "team_id": 0,
+        "project_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "chat_messages": {
+      "domain": "K_knowledge",
+      "rows": 300000,
+      "target_rows_scale_1": 1500000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "channel_id": 0,
+        "sender_employee_id": 0,
+        "reply_to_message_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "emails": {
+      "domain": "K_knowledge",
+      "rows": 100000,
+      "target_rows_scale_1": 500000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "sender_employee_id": 0,
+        "recipient_employee_id": 0,
+        "related_case_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "search_logs": {
+      "domain": "K_knowledge",
+      "rows": 200000,
+      "target_rows_scale_1": 1000000,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "employee_id": 0,
+        "clicked_article_id": 0
+      },
+      "date_order_violations": {}
+    },
+    "performance_metrics_aggregate": {
+      "domain": "A_workforce",
+      "rows": 6161,
+      "target_rows_scale_1": 6161,
+      "pk_duplicates": 0,
+      "fk_violations": {
+        "team_id": 0
+      },
+      "date_order_violations": {}
+    }
+  },
+  "summary": {
+    "invoice_line_reconciliation_mismatches": 0,
+    "ai_feedback_before_usage": 0,
+    "tables": 116,
+    "total_rows": 8898307,
+    "fk_violations": 0,
+    "pk_duplicates": 0,
+    "date_order_violations": 0,
+    "scale": 0.2
+  }
+}

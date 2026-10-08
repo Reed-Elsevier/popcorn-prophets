@@ -1,0 +1,1043 @@
+domain,table,column,data_type,key,allowed_values_or_range,null_pct,business_meaning
+A_workforce,sites,site_id,string,PK,"SITE01, SITE02",0.0,Identifier (site).
+A_workforce,sites,site_name,string,,"Iloilo Business Park Center, Quezon City Technohub Center",0.0,Site name.
+A_workforce,sites,city,string,,"Iloilo City, Quezon City",0.0,City.
+A_workforce,sites,region,string,,"NCR, Western Visayas",0.0,Region.
+A_workforce,sites,floors,integer,,4.00 to 6.00,0.0,Floors.
+A_workforce,sites,seat_capacity,integer,,"1,800.00 to 3,200.00",0.0,Seat capacity.
+A_workforce,sites,opened_date,date,,2012-03-01 00:00:00 to 2016-08-15 00:00:00,0.0,Date: opened date.
+A_workforce,sites,timezone,string,,Asia/Manila,0.0,Timezone.
+A_workforce,divisions,division_id,string,PK,"DIV01, DIV02, DIV03, DIV04, DIV05",0.0,Identifier (division).
+A_workforce,divisions,division_name,string,,"Agora Exhibitions & Events, Group Shared Services, Lumina Scholarly & Health Publishing, Sentinel Risk & Business Analytics, Veritas Legal & Professional",0.0,Division name.
+A_workforce,divisions,short_code,string,,"AEX, GSS, LPI, RBA, SHP",0.0,Short code.
+A_workforce,divisions,global_hq_city,string,,"Amsterdam, Atlanta, London, Quezon City, Singapore",0.0,Global hq city.
+A_workforce,divisions,primary_client_region,string,,"APAC, Americas, EMEA",0.0,Primary client region.
+A_workforce,divisions,center_site_id,string,FK->sites,"SITE01, SITE02",0.0,Foreign key to sites.
+A_workforce,departments,department_id,string,PK,free text / identifier,0.0,Identifier (department).
+A_workforce,departments,division_id,string,FK->divisions,"DIV01, DIV02, DIV03, DIV04, DIV05",0.0,Foreign key to divisions.
+A_workforce,departments,department_name,string,,free text / identifier,0.0,Department name.
+A_workforce,departments,job_family,string,,"Customer Service, Data & AI, Editorial, Events Operations, Finance, HR, Legal Editorial, Publishing Operations, Risk Operations, Technology, Transformation",0.0,Job family.
+A_workforce,departments,primary_site_id,string,FK->sites,"SITE01, SITE02",0.0,Foreign key to sites.
+A_workforce,roles,role_id,string,PK,free text / identifier,0.0,Identifier (role).
+A_workforce,roles,role_title,string,,free text / identifier,0.0,Role title.
+A_workforce,roles,department_id,string,FK->departments,free text / identifier,0.0,Foreign key to departments.
+A_workforce,roles,job_family,string,,"Customer Service, Data & AI, Editorial, Events Operations, Finance, HR, Legal Editorial, Publishing Operations, Risk Operations, Technology, Transformation",0.0,Job family.
+A_workforce,roles,job_level,string,,"Associate, Director, Manager, Senior Associate, Senior Manager, Specialist, Team Lead",0.0,Job level.
+A_workforce,roles,min_salary_php,decimal,,"22,000.00 to 207,400.00",0.0,Min salary (PHP).
+A_workforce,roles,max_salary_php,decimal,,"34,100.00 to 321,500.00",0.0,Max salary (PHP).
+A_workforce,roles,is_ai_data_role,boolean,,"False, True",0.0,Flag: ai data role.
+A_workforce,employees,employee_id,string,PK,free text / identifier,0.0,Identifier (employee).
+A_workforce,employees,first_name,string,,free text / identifier,0.0,First name.
+A_workforce,employees,last_name,string,,free text / identifier,0.0,Last name.
+A_workforce,employees,full_name,string,,free text / identifier,0.0,Full name.
+A_workforce,employees,email,string,,free text / identifier,0.0,Email.
+A_workforce,employees,site_id,string,FK->sites,"SITE01, SITE02",0.0,Foreign key to sites.
+A_workforce,employees,division_id,string,FK->divisions,"DIV01, DIV02, DIV03, DIV04, DIV05",0.0,Foreign key to divisions.
+A_workforce,employees,department_id,string,FK->departments,free text / identifier,0.0,Foreign key to departments.
+A_workforce,employees,team_id,string,FK->teams,free text / identifier,0.92,Foreign key to teams.
+A_workforce,employees,role_id,string,FK->roles,free text / identifier,0.0,Foreign key to roles.
+A_workforce,employees,job_family,string,,"Customer Service, Data & AI, Editorial, Events Operations, Finance, HR, Legal Editorial, Publishing Operations, Risk Operations, Technology, Transformation",0.0,Job family.
+A_workforce,employees,job_level,string,,"Associate, Director, Manager, Senior Associate, Senior Manager, Senior Specialist, Specialist, Team Lead",0.0,Job level.
+A_workforce,employees,manager_id,string,FK->employees,free text / identifier,0.02,Employee ID of the direct manager (self-reference to employees).
+A_workforce,employees,hire_date,date,,2012-10-03 00:00:00 to 2026-06-20 00:00:00,0.0,Date: hire date.
+A_workforce,employees,employment_type,string,,"Contractual, Probationary, Project-based, Regular",0.0,Employment type.
+A_workforce,employees,shift,string,,"Day, Mid, Night",0.0,"Work shift aligned to client time zone: Day (APAC), Mid (EMEA), Night (Americas)."
+A_workforce,employees,work_arrangement,string,,"Hybrid, Onsite",0.0,Work arrangement.
+A_workforce,employees,tenure_months,integer,,0.00 to 167.00,0.0,Tenure months.
+A_workforce,employees,attrition_flag,boolean,,"False, True",0.0,True if the employee has left the Center.
+A_workforce,employees,exit_date,date,,2022-01-03 00:00:00 to 2026-09-29 00:00:00,82.06,Date: exit date.
+A_workforce,employees,exit_reason,string,,"Career growth, Compensation, Further studies, Health, Overseas opportunity, Relocation, Work schedule",82.06,Exit reason.
+A_workforce,teams,team_id,string,PK,free text / identifier,0.0,Identifier (team).
+A_workforce,teams,department_id,string,FK->departments,free text / identifier,0.0,Foreign key to departments.
+A_workforce,teams,division_id,string,FK->divisions,"DIV01, DIV02, DIV03, DIV04, DIV05",0.0,Foreign key to divisions.
+A_workforce,teams,site_id,string,FK->sites,"SITE01, SITE02",0.0,Foreign key to sites.
+A_workforce,teams,shift,string,,"Day, Mid, Night",0.0,"Work shift aligned to client time zone: Day (APAC), Mid (EMEA), Night (Americas)."
+A_workforce,teams,client_region,string,,"APAC, Americas, EMEA",0.0,Client region.
+A_workforce,teams,team_name,string,,free text / identifier,0.0,Team name.
+A_workforce,teams,formed_date,timestamp,,2016-01-05 08:49:23 to 2024-06-21 14:36:48,0.0,Date: formed date.
+A_workforce,teams,ai_copilot_go_live,date,,2025-01-15 00:00:00 to 2025-04-01 00:00:00,90.0,Date the AI copilot was switched on for the team (null = not live).
+A_workforce,teams,team_lead_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+A_workforce,skill_taxonomy,taxonomy_id,string,PK,free text / identifier,0.0,Identifier (taxonomy).
+A_workforce,skill_taxonomy,node_level,string,,"Cluster, Domain",0.0,Node level.
+A_workforce,skill_taxonomy,node_name,string,,free text / identifier,0.0,Node name.
+A_workforce,skill_taxonomy,parent_taxonomy_id,string,FK->skill_taxonomy,"TAX001, TAX005, TAX009, TAX013, TAX017, TAX020, TAX023, TAX026, TAX029, TAX032, TAX034",30.56,Foreign key to skill_taxonomy.
+A_workforce,skills,skill_id,string,PK,free text / identifier,0.0,Identifier (skill).
+A_workforce,skills,skill_name,string,,free text / identifier,0.0,Skill name.
+A_workforce,skills,cluster_id,string,FK->skill_taxonomy,free text / identifier,0.0,Foreign key to skill_taxonomy.
+A_workforce,skills,domain_id,string,FK->skill_taxonomy,"TAX001, TAX005, TAX009, TAX013, TAX017, TAX020, TAX023, TAX026, TAX029, TAX032, TAX034",0.0,Foreign key to skill_taxonomy.
+A_workforce,skills,is_emerging,boolean,,"False, True",0.0,Flag: emerging.
+A_workforce,skills,market_demand_trend,string,,"Declining, Rising, Rising fast, Stable",0.0,Market demand trend.
+A_workforce,employee_skills,employee_skill_id,string,PK,free text / identifier,0.0,Identifier (employee skill).
+A_workforce,employee_skills,employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+A_workforce,employee_skills,skill_id,string,FK->skills,free text / identifier,0.0,Foreign key to skills.
+A_workforce,employee_skills,proficiency,integer,,1.00 to 5.00,0.0,Proficiency.
+A_workforce,employee_skills,last_assessed_date,date,,2023-01-02 00:00:00 to 2026-09-30 00:00:00,0.0,Date: last assessed date.
+A_workforce,employee_skills,source,string,,"Certification, Manager validation, Self-assessment, Skills assessment",0.0,Source.
+A_workforce,learning_content,content_id,string,PK,free text / identifier,0.0,Identifier (content).
+A_workforce,learning_content,skill_id,string,FK->skills,free text / identifier,0.0,Foreign key to skills.
+A_workforce,learning_content,format,string,,"Article, Assessment, Book, Course, Hands-on Lab, Video",0.0,Format.
+A_workforce,learning_content,title,string,,free text / identifier,0.0,Title.
+A_workforce,learning_content,provider,string,,"CloudPath Academy (fictional), DXO Enablement, LearnBridge (fictional), REPH Internal Academy, SkillForge (fictional)",0.0,Provider.
+A_workforce,learning_content,difficulty,string,,"Advanced, Beginner, Intermediate",0.0,Difficulty.
+A_workforce,learning_content,duration_minutes,integer,,5.00 to 512.00,0.0,Duration minutes (minutes).
+A_workforce,learning_content,language,string,,"English, Filipino",0.0,Language.
+A_workforce,learning_content,published_date,date,,2020-01-02 00:00:00 to 2026-09-28 00:00:00,0.0,Date: published date.
+A_workforce,learning_paths,path_id,string,PK,free text / identifier,0.0,Identifier (path).
+A_workforce,learning_paths,skill_domain,string,,"AI & Machine Learning, Automation, Customer Experience, Data & Analytics, Editorial & Publishing, Events & Marketing, Finance & Accounting, Leadership & Change, Legal Content, Risk & Compliance, Software & Cloud",0.0,Skill domain.
+A_workforce,learning_paths,target_level,string,,"Functional, Level 1 User, Level 2 Practitioner, Level 3 Expert",0.0,Target level.
+A_workforce,learning_paths,path_name,string,,free text / identifier,0.0,Path name.
+A_workforce,learning_paths,owner_department_id,string,FK->departments,"DEP033, DEP039, DEP040",0.0,Foreign key to departments.
+A_workforce,learning_paths,estimated_hours,integer,,5.00 to 55.00,0.0,Estimated hours.
+A_workforce,learning_path_items,path_item_id,string,PK,free text / identifier,0.0,Identifier (path item).
+A_workforce,learning_path_items,path_id,string,FK->learning_paths,free text / identifier,0.0,Foreign key to learning_paths.
+A_workforce,learning_path_items,content_id,string,FK->learning_content,free text / identifier,0.0,Foreign key to learning_content.
+A_workforce,learning_path_items,sequence_no,integer,,1.00 to 9.00,0.0,Sequence no.
+A_workforce,learning_records,learning_record_id,string,PK,free text / identifier,0.0,Identifier (learning record).
+A_workforce,learning_records,employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+A_workforce,learning_records,content_id,string,FK->learning_content,free text / identifier,0.0,Foreign key to learning_content.
+A_workforce,learning_records,path_id,string,FK->learning_paths,free text / identifier,82.12,Foreign key to learning_paths.
+A_workforce,learning_records,enrolled_at,timestamp,,2022-01-01 01:00:00 to 2026-09-28 12:00:00,0.0,Timestamp: enrolled.
+A_workforce,learning_records,completed_at,timestamp,,2022-01-02 17:26:49 to 2026-09-30 12:55:49,30.31,Timestamp: completed.
+A_workforce,learning_records,status,string,,"Completed, Dropped, In Progress, Not Started",0.0,Lifecycle status of the record.
+A_workforce,learning_records,score,decimal,,44.00 to 100.00,30.31,Score.
+A_workforce,learning_records,hours_spent,decimal,,0.00 to 11.77,0.0,Hours spent.
+A_workforce,ai_capability_levels,assessment_id,string,PK,free text / identifier,0.0,Identifier (assessment).
+A_workforce,ai_capability_levels,employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+A_workforce,ai_capability_levels,assessment_date,date,,2025-06-02 00:00:00 to 2026-09-15 00:00:00,0.0,Date: assessment date.
+A_workforce,ai_capability_levels,prompting_score,decimal,,0.00 to 100.00,0.0,Prompting score.
+A_workforce,ai_capability_levels,data_literacy_score,decimal,,3.90 to 100.00,0.0,Data literacy score.
+A_workforce,ai_capability_levels,automation_score,decimal,,0.00 to 100.00,0.0,Automation score.
+A_workforce,ai_capability_levels,ai_governance_score,decimal,,3.10 to 100.00,0.0,Ai governance score.
+A_workforce,ai_capability_levels,overall_score,decimal,,23.00 to 91.10,0.0,Overall score.
+A_workforce,ai_capability_levels,capability_level,string,,"Level 1 User, Level 2 Practitioner, Level 3 Expert",0.0,"AI capability level: Level 1 User, Level 2 Practitioner, Level 3 Expert."
+A_workforce,ai_capability_levels,recommended_path_id,string,FK->learning_paths,free text / identifier,0.0,Foreign key to learning_paths.
+A_workforce,career_paths,career_path_id,string,PK,free text / identifier,0.0,Identifier (career path).
+A_workforce,career_paths,from_role_id,string,FK->roles,free text / identifier,0.0,Foreign key to roles.
+A_workforce,career_paths,to_role_id,string,FK->roles,free text / identifier,0.0,Foreign key to roles.
+A_workforce,career_paths,path_type,string,,"Cross-skilling to AI/Data, Vertical",0.0,Path type.
+A_workforce,career_paths,typical_months,integer,,14.00 to 47.00,0.0,Typical months.
+A_workforce,career_paths,observed_moves,integer,,0.00 to 0.00,0.0,Observed moves.
+A_workforce,internal_mobility,move_id,string,PK,free text / identifier,0.0,Identifier (move).
+A_workforce,internal_mobility,employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+A_workforce,internal_mobility,from_role_id,string,FK->roles,free text / identifier,0.0,Foreign key to roles.
+A_workforce,internal_mobility,to_role_id,string,FK->roles,free text / identifier,0.0,Foreign key to roles.
+A_workforce,internal_mobility,from_team_id,string,FK->teams,free text / identifier,0.0,Foreign key to teams.
+A_workforce,internal_mobility,to_team_id,string,FK->teams,free text / identifier,0.0,Foreign key to teams.
+A_workforce,internal_mobility,effective_date,date,,2022-03-03 00:00:00 to 2026-09-29 00:00:00,0.0,Date: effective date.
+A_workforce,internal_mobility,move_type,string,,"Cross-division, Promotion",0.0,Move type.
+A_workforce,job_requisitions,requisition_id,string,PK,free text / identifier,0.0,Identifier (requisition).
+A_workforce,job_requisitions,role_id,string,FK->roles,free text / identifier,0.0,Foreign key to roles.
+A_workforce,job_requisitions,department_id,string,FK->departments,free text / identifier,0.0,Foreign key to departments.
+A_workforce,job_requisitions,team_id,string,FK->teams,free text / identifier,0.0,Foreign key to teams.
+A_workforce,job_requisitions,site_id,string,FK->sites,"SITE01, SITE02",0.0,Foreign key to sites.
+A_workforce,job_requisitions,hiring_manager_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+A_workforce,job_requisitions,opened_date,date,,2022-01-01 00:00:00 to 2026-08-28 00:00:00,0.0,Date: opened date.
+A_workforce,job_requisitions,filled_date,date,,2022-02-02 00:00:00 to 2026-09-26 00:00:00,3.33,Date: filled date.
+A_workforce,job_requisitions,status,string,,"Cancelled, Filled, Open",0.0,Lifecycle status of the record.
+A_workforce,job_requisitions,time_to_fill_days,decimal,,11.00 to 294.00,3.33,Time to fill days.
+A_workforce,job_requisitions,candidates_screened,integer,,3.00 to 146.00,0.0,Date: candidates screened.
+A_workforce,requisition_skills,requisition_skill_id,string,PK,free text / identifier,0.0,Identifier (requisition skill).
+A_workforce,requisition_skills,requisition_id,string,FK->job_requisitions,free text / identifier,0.0,Foreign key to job_requisitions.
+A_workforce,requisition_skills,skill_id,string,FK->skills,free text / identifier,0.0,Foreign key to skills.
+A_workforce,requisition_skills,requirement_type,string,,"Preferred, Required",0.0,Requirement type.
+A_workforce,performance_metrics_aggregate,metric_id,string,PK,free text / identifier,0.0,Identifier (metric).
+A_workforce,performance_metrics_aggregate,team_id,string,FK->teams,free text / identifier,0.0,Foreign key to teams.
+A_workforce,performance_metrics_aggregate,month,date,,2022-01-01 00:00:00 to 2026-09-01 00:00:00,0.0,Month.
+A_workforce,performance_metrics_aggregate,headcount,integer,,18.00 to 174.00,0.0,Headcount.
+A_workforce,performance_metrics_aggregate,cases_handled,decimal,,62.00 to 148.00,85.0,Cases handled.
+A_workforce,performance_metrics_aggregate,avg_handle_time_min,decimal,,9.15 to 18.88,85.0,Avg handle time min (minutes).
+A_workforce,performance_metrics_aggregate,avg_csat,decimal,,3.43 to 4.31,85.0,Avg csat.
+A_workforce,performance_metrics_aggregate,sla_met_rate,decimal,,0.49 to 0.85,85.0,Sla met rate.
+A_workforce,performance_metrics_aggregate,ai_assisted_share,decimal,,0.00 to 1.00,0.0,Ai assisted share.
+A_workforce,performance_metrics_aggregate,productivity_index,decimal,,85.90 to 157.70,0.0,Productivity index.
+A_workforce,performance_metrics_aggregate,quality_score,decimal,,68.60 to 100.00,0.0,Quality score.
+A_workforce,performance_metrics_aggregate,utilization_pct,decimal,,60.40 to 100.00,0.0,Utilization (%).
+B_publishing,institutions,institution_id,string,PK,free text / identifier,0.0,Identifier (institution).
+B_publishing,institutions,institution_name,string,,free text / identifier,0.0,Institution name.
+B_publishing,institutions,institution_type,string,,"Corporate R&D, Government Lab, Hospital, Research Institute, University",0.0,Institution type.
+B_publishing,institutions,country,string,,"Australia, Brazil, Canada, China, France, Germany, India, Japan, Netherlands, Philippines, Singapore, South Korea, United Kingdom, United States",0.0,Country.
+B_publishing,institutions,research_tier,string,,"Tier 1, Tier 2, Tier 3",0.0,Research tier.
+B_publishing,authors,author_id,string,PK,free text / identifier,0.0,Identifier (author).
+B_publishing,authors,first_name,string,,free text / identifier,0.0,First name.
+B_publishing,authors,last_name,string,,free text / identifier,0.0,Last name.
+B_publishing,authors,full_name,string,,free text / identifier,0.0,Full name.
+B_publishing,authors,author_ref_id,string,,free text / identifier,0.0,Identifier (author ref).
+B_publishing,authors,country,string,,"China, Germany, India, Japan, Netherlands, Philippines, United Kingdom, United States",0.0,Country.
+B_publishing,authors,primary_institution_id,string,FK->institutions,free text / identifier,0.0,Foreign key to institutions.
+B_publishing,authors,h_index,integer,,0.00 to 140.00,0.0,H index.
+B_publishing,authors,first_publication_year,integer,,"1,975.00 to 2,026.00",0.0,First publication year.
+B_publishing,authors,is_reviewer,boolean,,"False, True",0.0,Flag: reviewer.
+B_publishing,author_affiliations,affiliation_id,string,PK,free text / identifier,0.0,Identifier (affiliation).
+B_publishing,author_affiliations,author_id,string,FK->authors,free text / identifier,0.0,Foreign key to authors.
+B_publishing,author_affiliations,institution_id,string,FK->institutions,free text / identifier,0.0,Foreign key to institutions.
+B_publishing,author_affiliations,is_primary,boolean,,"False, True",0.0,Flag: primary.
+B_publishing,author_affiliations,start_year,integer,,"1,990.00 to 2,026.00",0.0,Start year.
+B_publishing,author_affiliations,end_year,decimal,,"1,992.00 to 2,026.00",80.0,End year.
+B_publishing,journals,journal_id,string,PK,free text / identifier,0.0,Identifier (journal).
+B_publishing,journals,journal_title,string,,free text / identifier,0.0,Journal title.
+B_publishing,journals,subject_area,string,,"Agricultural Science, Cardiology, Chemistry, Civil Engineering, Economics, Education Research, Energy Systems, Environmental Science, Immunology, Machine Learning, Materials Science, Neuroscience, Nursing, Oncology, Phar",0.0,Subject area.
+B_publishing,journals,imprint,string,,"Aurora Open, Helix Medical, Lumina Press, Meridian Academic, Northgate Science",0.0,Imprint.
+B_publishing,journals,impact_tier,string,,"Q1, Q2, Q3, Q4",0.0,Impact tier.
+B_publishing,journals,open_access_model,string,,"Gold OA, Hybrid, Subscription",0.0,Open access model.
+B_publishing,journals,launch_year,integer,,"1,950.00 to 2,025.00",0.0,Launch year.
+B_publishing,journals,issues_per_year,integer,,0.00 to 24.00,0.0,Issues per year.
+B_publishing,journals,managing_team_id,string,FK->teams,"TM0001, TM0042, TM0073",0.0,Foreign key to teams.
+B_publishing,journals,editor_in_chief_author_id,string,FK->authors,free text / identifier,0.0,Foreign key to authors.
+B_publishing,manuscripts,manuscript_id,string,PK,free text / identifier,0.0,Identifier (manuscript).
+B_publishing,manuscripts,journal_id,string,FK->journals,free text / identifier,0.0,Foreign key to journals.
+B_publishing,manuscripts,corresponding_author_id,string,FK->authors,free text / identifier,0.0,Foreign key to authors.
+B_publishing,manuscripts,handling_editor_author_id,string,FK->authors,free text / identifier,0.0,Foreign key to authors.
+B_publishing,manuscripts,ops_coordinator_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+B_publishing,manuscripts,article_type,string,,"Case Report, Data Article, Letter, Original Research, Review, Short Communication, Systematic Review",0.0,Article type.
+B_publishing,manuscripts,subject_area,string,,"Agricultural Science, Cardiology, Chemistry, Civil Engineering, Economics, Education Research, Energy Systems, Environmental Science, Immunology, Machine Learning, Materials Science, Neuroscience, Nursing, Oncology, Phar",0.0,Subject area.
+B_publishing,manuscripts,topic,string,,free text / identifier,0.0,Topic.
+B_publishing,manuscripts,submitted_at,timestamp,,2022-01-01 07:21:33 to 2026-09-25 00:00:00,0.0,Timestamp: submitted.
+B_publishing,manuscripts,first_decision_at,timestamp,,2022-01-05 10:54:45 to 2026-09-30 23:43:24,2.21,Timestamp: first decision.
+B_publishing,manuscripts,final_decision_at,timestamp,,2022-01-05 10:54:45 to 2026-09-30 22:59:53,3.94,Timestamp: final decision.
+B_publishing,manuscripts,final_decision,string,,"Accepted, Desk Rejected, Rejected, Under Review, Withdrawn",0.0,Editorial outcome of the manuscript.
+B_publishing,manuscripts,revision_rounds,integer,,0.00 to 3.00,0.0,Revision rounds.
+B_publishing,manuscripts,turnaround_days,decimal,,0.50 to 595.70,3.94,Turnaround days.
+B_publishing,manuscripts,similarity_score_pct,decimal,,1.10 to 63.50,0.0,"Text similarity vs. prior literature (plagiarism screen), %."
+B_publishing,peer_review_assignments,assignment_id,string,PK,free text / identifier,0.0,Identifier (assignment).
+B_publishing,peer_review_assignments,manuscript_id,string,FK->manuscripts,free text / identifier,0.0,Foreign key to manuscripts.
+B_publishing,peer_review_assignments,reviewer_author_id,string,FK->authors,free text / identifier,0.0,Foreign key to authors.
+B_publishing,peer_review_assignments,invited_at,timestamp,,2022-01-02 07:16:45 to 2026-09-29 23:54:45,0.0,Timestamp: invited.
+B_publishing,peer_review_assignments,responded_at,timestamp,,2022-01-04 00:43:04 to 2026-09-30 23:54:45,15.1,Timestamp: responded.
+B_publishing,peer_review_assignments,response,string,,"Accepted, Awaiting response, Declined, No Response",0.0,Response.
+B_publishing,peer_review_assignments,due_at,timestamp,,2022-01-25 00:43:04 to 2026-10-21 23:54:45,15.1,Timestamp: due.
+B_publishing,peer_review_assignments,review_submitted_at,timestamp,,2022-01-12 19:03:25 to 2026-09-30 23:23:27,46.03,Timestamp: review submitted.
+B_publishing,peer_review_assignments,is_overdue,boolean,,"False, True",0.0,Flag: overdue.
+B_publishing,peer_review_assignments,recommendation,string,,"Accept, Major Revision, Minor Revision, Reject",46.03,Recommendation.
+B_publishing,peer_review_assignments,review_quality_score,decimal,,1.00 to 5.00,46.03,Review quality score.
+B_publishing,peer_review_assignments,review_word_count,decimal,,"40.00 to 4,000.00",46.03,Count of review word.
+B_publishing,research_papers_published,paper_id,string,PK,free text / identifier,0.0,Identifier (paper).
+B_publishing,research_papers_published,manuscript_id,string,FK->manuscripts,free text / identifier,0.0,Foreign key to manuscripts.
+B_publishing,research_papers_published,journal_id,string,FK->journals,free text / identifier,0.0,Foreign key to journals.
+B_publishing,research_papers_published,published_date,date,,2022-03-11 00:00:00 to 2026-09-30 00:00:00,0.0,Date: published date.
+B_publishing,research_papers_published,doi,string,,free text / identifier,0.0,Doi.
+B_publishing,research_papers_published,title,string,,free text / identifier,0.0,Title.
+B_publishing,research_papers_published,abstract,string,,free text / identifier,0.0,Abstract.
+B_publishing,research_papers_published,keywords,string,,free text / identifier,0.0,Keywords.
+B_publishing,research_papers_published,subject_area,string,,"Agricultural Science, Cardiology, Chemistry, Civil Engineering, Economics, Education Research, Energy Systems, Environmental Science, Immunology, Machine Learning, Materials Science, Neuroscience, Nursing, Oncology, Phar",0.0,Subject area.
+B_publishing,research_papers_published,topic,string,,free text / identifier,0.0,Topic.
+B_publishing,research_papers_published,article_type,string,,"Case Report, Data Article, Letter, Original Research, Review, Short Communication, Systematic Review",0.0,Article type.
+B_publishing,research_papers_published,open_access,boolean,,"False, True",0.0,Open access.
+B_publishing,research_papers_published,page_count,integer,,2.00 to 53.00,0.0,Count of page.
+B_publishing,research_papers_published,downloads_total,integer,,"10.00 to 43,594.00",0.0,Downloads total.
+B_publishing,research_papers_published,citation_count,integer,,"0.00 to 5,980.00",0.0,Count of citation.
+B_publishing,research_papers_published,institution_id,string,FK->institutions,free text / identifier,0.0,Foreign key to institutions.
+B_publishing,paper_authors,paper_author_id,string,PK,free text / identifier,0.0,Identifier (paper author).
+B_publishing,paper_authors,paper_id,string,FK->research_papers_published,free text / identifier,0.0,Foreign key to research_papers_published.
+B_publishing,paper_authors,author_id,string,FK->authors,free text / identifier,0.0,Foreign key to authors.
+B_publishing,paper_authors,author_position,integer,,1.00 to 15.00,0.0,Author position.
+B_publishing,paper_authors,is_corresponding,boolean,,"False, True",0.0,Flag: corresponding.
+B_publishing,paper_authors,affiliation_institution_id,string,FK->institutions,free text / identifier,0.0,Foreign key to institutions.
+B_publishing,citations,citation_id,string,PK,free text / identifier,0.0,Identifier (citation).
+B_publishing,citations,citing_paper_id,string,FK->research_papers_published,free text / identifier,0.0,Foreign key to research_papers_published.
+B_publishing,citations,cited_paper_id,string,FK->research_papers_published,free text / identifier,0.0,Foreign key to research_papers_published.
+B_publishing,citations,citation_year,integer,,"2,022.00 to 2,026.00",0.0,Citation year.
+B_publishing,citations,context_section,string,,"Discussion, Introduction, Methods, Results",0.0,Context section.
+B_publishing,content_production_jobs,job_id,string,PK,free text / identifier,0.0,Identifier (job).
+B_publishing,content_production_jobs,paper_id,string,FK->research_papers_published,free text / identifier,0.0,Foreign key to research_papers_published.
+B_publishing,content_production_jobs,stage,string,,"Copyedit, Proofing, QA, Release, Typeset, XML Conversion",0.0,Lifecycle stage.
+B_publishing,content_production_jobs,stage_order,integer,,1.00 to 6.00,0.0,Stage order.
+B_publishing,content_production_jobs,team_id,string,FK->teams,"TM0003, TM0004, TM0059, TM0071, TM0077, TM0086, TM0120",0.0,Foreign key to teams.
+B_publishing,content_production_jobs,vendor_name,string,,"DataConv Services B (fictional), In-house, Typeset Partners A (fictional)",0.0,Vendor name.
+B_publishing,content_production_jobs,started_at,timestamp,,2024-10-30 14:11:58 to 2026-09-27 11:16:27,0.0,Timestamp: started.
+B_publishing,content_production_jobs,completed_at,timestamp,,2024-10-31 17:20:10 to 2026-09-27 15:20:25,0.0,Timestamp: completed.
+B_publishing,content_production_jobs,sla_hours,integer,,8.00 to 72.00,0.0,Sla hours.
+B_publishing,content_production_jobs,assignee_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+B_publishing,content_production_jobs,elapsed_hours,decimal,,0.64 to 631.55,0.0,Elapsed hours.
+B_publishing,content_production_jobs,sla_met,boolean,,"False, True",0.0,True if resolved within SLA (null while open).
+B_publishing,content_production_jobs,rework_count,integer,,0.00 to 7.00,0.0,Number of times the job was sent back for rework.
+B_publishing,content_production_jobs,tool_version,string,,"XConvert 3.8, XConvert 4.0",83.33,Version of the XML conversion tool used (XML Conversion stage only).
+B_publishing,content_production_jobs,status,string,,Completed,0.0,Lifecycle status of the record.
+B_publishing,xml_conversion_defects,defect_id,string,PK,free text / identifier,0.0,Identifier (defect).
+B_publishing,xml_conversion_defects,job_id,string,FK->content_production_jobs,free text / identifier,0.0,Foreign key to content_production_jobs.
+B_publishing,xml_conversion_defects,paper_id,string,FK->research_papers_published,free text / identifier,0.0,Foreign key to research_papers_published.
+B_publishing,xml_conversion_defects,defect_type,string,,"Figure, Math/Equation, Metadata, Reference, Tagging",0.0,Defect type.
+B_publishing,xml_conversion_defects,severity,string,,"Critical, Major, Minor",0.0,Severity.
+B_publishing,xml_conversion_defects,detected_at,timestamp,,2024-11-03 04:10:02 to 2026-09-26 13:20:43,0.0,Timestamp: detected.
+B_publishing,xml_conversion_defects,detected_by,string,,"AI Validator, Human QA, Rule Engine",0.0,Detected by.
+B_publishing,xml_conversion_defects,fixed_at,timestamp,,2024-11-03 08:06:01 to 2026-09-27 19:20:42,0.0,Timestamp: fixed.
+B_publishing,xml_conversion_defects,root_cause,string,,"Conversion rule gap, Manual keying error, Source file quality, Template mismatch, Unknown",0.0,Root cause.
+B_publishing,research_integrity_flags,flag_id,string,PK,free text / identifier,0.0,Identifier (flag).
+B_publishing,research_integrity_flags,paper_id,string,FK->research_papers_published,free text / identifier,0.0,Foreign key to research_papers_published.
+B_publishing,research_integrity_flags,flag_type,string,,"Authorship dispute, Citation manipulation, Data fabrication concern, Image duplication, Plagiarism, Reviewer manipulation, Suspected paper mill, Undisclosed conflict of interest",0.0,Flag type.
+B_publishing,research_integrity_flags,manuscript_id,string,FK->manuscripts,free text / identifier,0.0,Foreign key to manuscripts.
+B_publishing,research_integrity_flags,flagged_at,timestamp,,2022-05-25 13:09:29 to 2026-09-29 10:03:38,0.0,Timestamp: flagged.
+B_publishing,research_integrity_flags,detected_by,string,,"Editor, Integrity team audit, Reader report, Screening tool",0.0,Detected by.
+B_publishing,research_integrity_flags,status,string,,"Cleared, Corrected, Open, Retracted, Under Investigation",0.0,Lifecycle status of the record.
+B_publishing,research_integrity_flags,assigned_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+B_publishing,research_integrity_flags,evidence_summary,string,,"Co-author claims contribution was not acknowledged., Disproportionate citations to a small group of authors., Funding source not declared., High similarity with prior publication without attribution., Overlapping western",0.0,Evidence summary.
+C_legal,jurisdictions,jurisdiction_id,string,PK,free text / identifier,0.0,Identifier (jurisdiction).
+C_legal,jurisdictions,jurisdiction_name,string,,free text / identifier,0.0,Jurisdiction name.
+C_legal,jurisdictions,jurisdiction_code,string,,free text / identifier,0.0,Jurisdiction code.
+C_legal,jurisdictions,legal_system,string,,"Civil Law, Common Law, Mixed",0.0,Legal system.
+C_legal,jurisdictions,region,string,,"APAC, Americas, EMEA",0.0,Region.
+C_legal,jurisdictions,official_language,string,,"Dutch, English, French, German, Japanese, Spanish",0.0,Official language.
+C_legal,courts,court_id,string,PK,free text / identifier,0.0,Identifier (court).
+C_legal,courts,jurisdiction_id,string,FK->jurisdictions,free text / identifier,0.0,Foreign key to jurisdictions.
+C_legal,courts,court_name,string,,free text / identifier,0.0,Court name.
+C_legal,courts,court_level,string,,"Appellate, Supreme, Trial, Tribunal",0.0,Court level.
+C_legal,courts,court_code,string,,free text / identifier,0.0,Court code.
+C_legal,practice_areas,practice_area_id,string,PK,free text / identifier,0.0,Identifier (practice area).
+C_legal,practice_areas,practice_area_name,string,,free text / identifier,0.0,Practice area name.
+C_legal,practice_areas,practice_group,string,,"Corporate & Commercial, Disputes, Finance, Private Client, Public Law, Regulatory",0.0,Practice group.
+C_legal,legal_documents,doc_id,string,PK,free text / identifier,0.0,Identifier (doc).
+C_legal,legal_documents,doc_type,string,,"Case Law, Commentary, Practice Note, Regulation, Statute",0.0,Doc type.
+C_legal,legal_documents,jurisdiction_id,string,FK->jurisdictions,free text / identifier,0.0,Foreign key to jurisdictions.
+C_legal,legal_documents,practice_area_id,string,FK->practice_areas,free text / identifier,0.0,Foreign key to practice_areas.
+C_legal,legal_documents,court_id,string,FK->courts,free text / identifier,37.92,Foreign key to courts.
+C_legal,legal_documents,decision_or_enacted_date,date,,1975-01-03 00:00:00 to 2026-09-27 00:00:00,0.0,Date: decision or enacted date.
+C_legal,legal_documents,title,string,,free text / identifier,0.0,Title.
+C_legal,legal_documents,citation_ref,string,,free text / identifier,0.0,Citation ref.
+C_legal,legal_documents,summary,string,,free text / identifier,0.0,Summary.
+C_legal,legal_documents,headnote,string,,free text / identifier,37.92,Headnote.
+C_legal,legal_documents,word_count,integer,,"300.00 to 120,000.00",0.0,Count of word.
+C_legal,legal_documents,status,string,,"Amended, Current, Overruled, Repealed",0.0,Lifecycle status of the record.
+C_legal,legal_documents,last_updated_at,timestamp,,1975-03-25 00:00:00 to 2026-09-30 00:00:00,0.0,Timestamp: last updated.
+C_legal,legal_citations,legal_citation_id,string,PK,free text / identifier,0.0,Identifier (legal citation).
+C_legal,legal_citations,citing_doc_id,string,FK->legal_documents,free text / identifier,0.0,Foreign key to legal_documents.
+C_legal,legal_citations,cited_doc_id,string,FK->legal_documents,free text / identifier,0.0,Foreign key to legal_documents.
+C_legal,legal_citations,treatment,string,,"Applied, Cited, Considered, Distinguished, Followed, Overruled",0.0,"How the citing document treats the cited one (Followed, Distinguished, Overruled...)."
+C_legal,legal_citations,citation_date,date,,1975-05-15 00:00:00 to 2026-09-27 00:00:00,0.0,Date: citation date.
+C_legal,editorial_tasks,task_id,string,PK,free text / identifier,0.0,Identifier (task).
+C_legal,editorial_tasks,doc_id,string,FK->legal_documents,free text / identifier,0.0,Foreign key to legal_documents.
+C_legal,editorial_tasks,task_type,string,,"Classify, Headnote, QA, Summarize, Update",0.0,Task type.
+C_legal,editorial_tasks,team_id,string,FK->teams,free text / identifier,0.0,Foreign key to teams.
+C_legal,editorial_tasks,editor_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+C_legal,editorial_tasks,created_at,timestamp,,2022-01-01 00:00:00 to 2026-09-30 23:59:59,0.0,Timestamp: created.
+C_legal,editorial_tasks,ai_assisted,boolean,,"False, True",0.0,Ai assisted.
+C_legal,editorial_tasks,model_id,string,FK->ai_models,"MDL0001, MDL0096",95.88,Foreign key to ai_models.
+C_legal,editorial_tasks,minutes_spent,decimal,,2.80 to 240.50,0.0,Minutes spent.
+C_legal,editorial_tasks,completed_at,timestamp,,2022-01-01 01:22:00 to 2026-09-30 23:22:43,0.03,Timestamp: completed.
+C_legal,editorial_tasks,accuracy_score,decimal,,0.70 to 1.00,0.03,QA-measured accuracy of the editorial output (0-1).
+C_legal,editorial_tasks,qa_passed,boolean,,"False, True",0.03,Qa passed.
+C_legal,editorial_tasks,status,string,,"Completed, Open",0.0,Lifecycle status of the record.
+C_legal,regulatory_updates,update_id,string,PK,free text / identifier,0.0,Identifier (update).
+C_legal,regulatory_updates,jurisdiction_id,string,FK->jurisdictions,free text / identifier,0.0,Foreign key to jurisdictions.
+C_legal,regulatory_updates,practice_area_id,string,FK->practice_areas,free text / identifier,0.0,Foreign key to practice_areas.
+C_legal,regulatory_updates,source_body,string,,free text / identifier,0.0,Source body.
+C_legal,regulatory_updates,update_type,string,,"Amendment, Consultation, Court Rule Change, Enforcement Notice, Guidance, New Regulation",0.0,Date: update type.
+C_legal,regulatory_updates,published_at,timestamp,,2022-01-01 00:00:00 to 2026-09-30 17:00:08,0.0,Timestamp: published.
+C_legal,regulatory_updates,effective_date,date,,2022-01-02 00:00:00 to 2027-03-19 00:00:00,0.0,Date: effective date.
+C_legal,regulatory_updates,captured_at,timestamp,,2022-01-01 14:48:18 to 2026-09-30 23:59:59,0.0,Timestamp: captured.
+C_legal,regulatory_updates,title,string,,free text / identifier,0.0,Title.
+C_legal,regulatory_updates,summary,string,,free text / identifier,0.0,Summary.
+C_legal,regulatory_update_impacts,impact_id,string,PK,free text / identifier,0.0,Identifier (impact).
+C_legal,regulatory_update_impacts,update_id,string,FK->regulatory_updates,free text / identifier,0.0,Foreign key to regulatory_updates.
+C_legal,regulatory_update_impacts,doc_id,string,FK->legal_documents,free text / identifier,0.0,Foreign key to legal_documents.
+C_legal,regulatory_update_impacts,sla_hours,integer,,72.00 to 72.00,0.0,Sla hours.
+C_legal,regulatory_update_impacts,content_updated_at,timestamp,,2022-01-02 00:39:22 to 2026-09-30 23:36:16,0.14,Timestamp: content updated.
+C_legal,regulatory_update_impacts,latency_hours,decimal,,2.90 to 982.90,0.14,Hours from regulatory change capture to content update.
+C_legal,regulatory_update_impacts,sla_breached,boolean,,"False, True",0.0,True if the SLA was breached.
+C_legal,regulatory_update_impacts,editor_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+D_risk,business_entities,entity_id,string,PK,free text / identifier,0.0,Identifier (entity).
+D_risk,business_entities,legal_name,string,,free text / identifier,0.0,Legal name.
+D_risk,business_entities,registration_number,string,,free text / identifier,0.0,Registration number.
+D_risk,business_entities,country,string,,free text / identifier,0.0,Country.
+D_risk,business_entities,industry,string,,free text / identifier,0.0,Industry.
+D_risk,business_entities,entity_type,string,,"Corporation, Foundation, Government Body, LLC, Non-profit, Partnership, Trust",0.0,Entity type.
+D_risk,business_entities,incorporation_date,date,,1810-07-06 00:00:00 to 2025-09-11 00:00:00,0.0,Date: incorporation date.
+D_risk,business_entities,employee_band,string,,"1-10, 1001-5000, 11-50, 201-1000, 5000+, 51-200",0.0,Employee band.
+D_risk,business_entities,annual_revenue_usd,decimal,,"1,400.00 to 2,283,583,000.00",0.0,Annual revenue (USD).
+D_risk,business_entities,status,string,,"Active, Dissolved, Dormant",0.0,Lifecycle status of the record.
+D_risk,business_entities,is_listed,boolean,,"False, True",0.0,Flag: listed.
+D_risk,ownership_links,ownership_link_id,string,PK,free text / identifier,0.0,Identifier (ownership link).
+D_risk,ownership_links,parent_entity_id,string,FK->business_entities,free text / identifier,0.0,Foreign key to business_entities.
+D_risk,ownership_links,child_entity_id,string,FK->business_entities,free text / identifier,0.0,Foreign key to business_entities.
+D_risk,ownership_links,ownership_pct,decimal,,1.50 to 100.00,0.0,Share of the child entity owned by the parent (%).
+D_risk,ownership_links,link_type,string,,"Direct, Indirect, Nominee",0.0,Link type.
+D_risk,ownership_links,effective_date,date,,2010-01-01 00:00:00 to 2026-09-29 00:00:00,0.0,Date: effective date.
+D_risk,individuals,individual_id,string,PK,free text / identifier,0.0,Identifier (individual).
+D_risk,individuals,first_name,string,,free text / identifier,0.0,First name.
+D_risk,individuals,last_name,string,,free text / identifier,0.0,Last name.
+D_risk,individuals,date_of_birth,date,,1946-10-01 00:00:00 to 2007-09-30 00:00:00,0.0,Date: date of birth.
+D_risk,individuals,nationality,string,,"China, Germany, India, Japan, Netherlands, Philippines, United Kingdom, United States",0.0,Nationality.
+D_risk,individuals,gender,string,,"F, M, X",0.0,Gender.
+D_risk,individuals,occupation,string,,"Business owner, Employee, Public official, Retired, Self-employed, Student, Unemployed",0.0,Occupation.
+D_risk,individuals,created_at,timestamp,,2018-01-01 10:25:46 to 2026-09-30 00:00:00,0.0,Timestamp: created.
+D_risk,addresses,address_id,string,PK,free text / identifier,0.0,Identifier (address).
+D_risk,addresses,individual_id,string,FK->individuals,free text / identifier,0.0,Foreign key to individuals.
+D_risk,addresses,address_line,string,,free text / identifier,0.0,Address line.
+D_risk,addresses,city,string,,free text / identifier,0.0,City.
+D_risk,addresses,country,string,,"China, Germany, India, Japan, Netherlands, Philippines, United Kingdom, United States",0.0,Country.
+D_risk,addresses,postal_code,string,,free text / identifier,0.0,Postal code.
+D_risk,addresses,address_type,string,,"Mailing, Previous, Residential",0.0,Address type.
+D_risk,addresses,valid_from,date,,2015-01-01 00:00:00 to 2026-09-30 00:00:00,0.0,Valid from.
+D_risk,identity_attributes,attribute_id,string,PK,free text / identifier,0.0,Identifier (attribute).
+D_risk,identity_attributes,individual_id,string,FK->individuals,free text / identifier,0.0,Foreign key to individuals.
+D_risk,identity_attributes,attribute_type,string,,"Driver Licence, Email, National ID, Passport, Phone, Tax ID",0.0,Attribute type.
+D_risk,identity_attributes,attribute_value_hash,string,,free text / identifier,0.0,Attribute value hash.
+D_risk,identity_attributes,verified,boolean,,"False, True",0.0,Verified.
+D_risk,identity_attributes,verification_method,string,,"Biometric, Database match, Document check, OTP",20.02,Verification method.
+D_risk,identity_attributes,verified_at,timestamp,,2018-01-01 18:15:24 to 2026-09-30 22:57:27,20.06,Timestamp: verified.
+D_risk,devices,device_id,string,PK,free text / identifier,0.0,Identifier (device).
+D_risk,devices,individual_id,string,FK->individuals,free text / identifier,0.0,Foreign key to individuals.
+D_risk,devices,device_fingerprint,string,,free text / identifier,0.0,Hashed device fingerprint; the same fingerprint on different identities is a risk signal.
+D_risk,devices,device_type,string,,"Desktop, Mobile, Tablet",0.0,Device type.
+D_risk,devices,os,string,,"Android, Linux, Windows, iOS, macOS",0.0,Os.
+D_risk,devices,first_seen_at,timestamp,,2018-01-02 20:49:47 to 2026-09-30 21:57:57,0.0,Timestamp: first seen.
+D_risk,devices,last_seen_at,timestamp,,2018-01-21 08:04:14 to 2026-09-30 23:59:59,0.0,Timestamp: last seen.
+D_risk,devices,ip_country,string,,free text / identifier,0.0,Ip country.
+D_risk,accounts,account_id,string,PK,free text / identifier,0.0,Identifier (account).
+D_risk,accounts,holder_type,string,,"Entity, Individual",0.0,Holder type.
+D_risk,accounts,individual_id,string,FK->individuals,free text / identifier,19.9,Foreign key to individuals.
+D_risk,accounts,entity_id,string,FK->business_entities,free text / identifier,80.1,Foreign key to business_entities.
+D_risk,accounts,client_customer_id,string,FK->customers,free text / identifier,0.0,Foreign key to customers.
+D_risk,accounts,account_type,string,,"Business current, Credit card, Current, E-wallet, Merchant, Savings, Trade finance",0.0,Account type.
+D_risk,accounts,currency,string,,"EUR, GBP, JPY, PHP, USD",0.0,Currency.
+D_risk,accounts,opened_at,timestamp,,2016-01-01 13:24:09 to 2026-09-30 00:00:00,0.0,Timestamp: opened.
+D_risk,accounts,status,string,,"Active, Closed, Dormant, Frozen",0.0,Lifecycle status of the record.
+D_risk,accounts,risk_rating,string,,"High, Low, Medium",0.0,Risk rating.
+D_risk,transactions,txn_id,string,PK,free text / identifier,0.0,Identifier (txn).
+D_risk,transactions,account_id,string,FK->accounts,free text / identifier,0.0,Foreign key to accounts.
+D_risk,transactions,counterparty_account_id,string,FK->accounts,free text / identifier,70.41,Foreign key to accounts.
+D_risk,transactions,device_id,string,FK->devices,free text / identifier,60.49,Foreign key to devices.
+D_risk,transactions,channel,string,,"ATM, Branch, Card, Mobile wallet, Online transfer, Wire",0.0,Channel.
+D_risk,transactions,merchant_category,string,,"Crypto exchange, Dining, Electronics, Fuel, Gaming, Groceries, Online marketplace, Travel",62.04,Merchant category.
+D_risk,transactions,currency,string,,"EUR, GBP, JPY, PHP, USD",0.0,Currency.
+D_risk,transactions,amount,decimal,,"0.93 to 26,863,879.99",0.0,Amount.
+D_risk,transactions,amount_usd,decimal,,"0.87 to 305,796.22",0.0,Amount converted to USD at a fixed synthetic FX rate.
+D_risk,transactions,txn_country,string,,free text / identifier,0.0,Txn country.
+D_risk,transactions,is_cross_border,boolean,,"False, True",0.0,Flag: cross border.
+D_risk,transactions,txn_ts,timestamp,,2024-01-01 07:03:33 to 2026-09-30 01:00:00,0.0,Timestamp: txn.
+D_risk,transactions,status,string,,"Declined, Pending, Reversed, Settled",0.0,Lifecycle status of the record.
+D_risk,watchlists,watchlist_entry_id,string,PK,free text / identifier,0.0,Identifier (watchlist entry).
+D_risk,watchlists,subject_type,string,,"Entity, Individual",0.0,Subject type.
+D_risk,watchlists,individual_id,string,FK->individuals,free text / identifier,39.74,Foreign key to individuals.
+D_risk,watchlists,entity_id,string,FK->business_entities,free text / identifier,60.26,Foreign key to business_entities.
+D_risk,watchlists,list_type,string,,"Adverse media-like, Law enforcement-like, PEP-like, Sanctions-like",0.0,List type.
+D_risk,watchlists,list_source,string,,"Adverse Media Index (fictional), Global Restricted Parties List (fictional), Politically Exposed Persons Register (fictional), Regional Enforcement Bulletin (fictional)",0.0,List source.
+D_risk,watchlists,listed_date,date,,2015-01-03 00:00:00 to 2026-09-30 00:00:00,0.0,Date: listed date.
+D_risk,watchlists,reason,string,,"Asset freeze, Fraud allegations in media, Senior public function, Under investigation",0.0,Reason.
+D_risk,alert_rules,rule_id,string,PK,free text / identifier,0.0,Identifier (rule).
+D_risk,alert_rules,rule_name,string,,free text / identifier,0.0,Rule name.
+D_risk,alert_rules,rule_type,string,,"Model-based, Rule-based",0.0,Rule type.
+D_risk,alert_rules,threshold,decimal,,0.50 to 0.94,0.0,Threshold.
+D_risk,alert_rules,model_id,string,FK->ai_models,MDL0005,75.0,Foreign key to ai_models.
+D_risk,alert_rules,owner_team_id,string,FK->teams,free text / identifier,0.0,Foreign key to teams.
+D_risk,alert_rules,created_date,date,,2019-01-16 00:00:00 to 2023-09-04 00:00:00,0.0,Date: created date.
+D_risk,risk_alerts,alert_id,string,PK,free text / identifier,0.0,Identifier (alert).
+D_risk,risk_alerts,rule_id,string,FK->alert_rules,free text / identifier,0.0,Foreign key to alert_rules.
+D_risk,risk_alerts,txn_id,string,FK->transactions,free text / identifier,0.0,Foreign key to transactions.
+D_risk,risk_alerts,account_id,string,FK->accounts,free text / identifier,0.0,Foreign key to accounts.
+D_risk,risk_alerts,created_at,timestamp,,2024-01-01 11:40:03 to 2026-09-30 09:07:23,0.0,Timestamp: created.
+D_risk,risk_alerts,score,decimal,,0.00 to 1.00,0.0,Score.
+D_risk,risk_alerts,is_false_positive,boolean,,"False, True",0.06,True if the alert was closed as a false positive (null while open).
+D_risk,risk_alerts,disposition,string,,"Closed - False Positive, Closed - Monitoring, Closed - True Positive, Escalated to investigation, Open",0.0,Disposition.
+D_risk,risk_alerts,analyst_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+D_risk,risk_alerts,closed_at,timestamp,,2024-01-01 15:31:47 to 2026-09-30 23:52:24,0.06,Timestamp: closed.
+D_risk,kyc_cases,kyc_case_id,string,PK,free text / identifier,0.0,Identifier (kyc case).
+D_risk,kyc_cases,client_customer_id,string,FK->customers,free text / identifier,0.0,Foreign key to customers.
+D_risk,kyc_cases,subject_type,string,,"Entity, Individual",0.0,Subject type.
+D_risk,kyc_cases,subject_individual_id,string,FK->individuals,free text / identifier,35.59,Foreign key to individuals.
+D_risk,kyc_cases,subject_entity_id,string,FK->business_entities,free text / identifier,64.41,Foreign key to business_entities.
+D_risk,kyc_cases,case_type,string,,"Event-driven Review, Onboarding, Periodic Review",0.0,Case type.
+D_risk,kyc_cases,opened_at,timestamp,,2023-01-02 07:46:54 to 2026-09-30 00:00:00,0.0,Timestamp: opened.
+D_risk,kyc_cases,analyst_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+D_risk,kyc_cases,documents_requested,integer,,0.00 to 12.00,0.0,Documents requested.
+D_risk,kyc_cases,closed_at,timestamp,,2023-01-05 07:09:34 to 2026-09-30 20:30:05,0.97,Timestamp: closed.
+D_risk,kyc_cases,risk_level,string,,"High, Low, Medium",0.0,Risk level.
+D_risk,kyc_cases,outcome,string,,"Approved, Approved with EDD, Exited, In Progress, Rejected",0.0,Final outcome / result of the record.
+D_risk,investigations,investigation_id,string,PK,free text / identifier,0.0,Identifier (investigation).
+D_risk,investigations,alert_id,string,FK->risk_alerts,free text / identifier,0.0,Foreign key to risk_alerts.
+D_risk,investigations,kyc_case_id,string,FK->kyc_cases,free text / identifier,79.32,Foreign key to kyc_cases.
+D_risk,investigations,lead_analyst_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+D_risk,investigations,opened_at,timestamp,,2024-01-01 15:31:47 to 2026-09-30 16:16:39,0.0,Timestamp: opened.
+D_risk,investigations,closed_at,timestamp,,2024-01-02 12:35:42 to 2026-09-29 14:35:22,0.7,Timestamp: closed.
+D_risk,investigations,time_to_decision_hours,decimal,,4.50 to 760.90,0.7,Time to decision hours.
+D_risk,investigations,outcome,string,,"Account exited, Enhanced monitoring, No further action, Open, Suspicious activity report filed (SAR-like)",0.0,Final outcome / result of the record.
+D_risk,investigations,steps_count,integer,,7.00 to 90.00,0.0,Count of steps.
+D_risk,analyst_actions,action_id,string,PK,free text / identifier,0.0,Identifier (action).
+D_risk,analyst_actions,investigation_id,string,FK->investigations,free text / identifier,0.0,Foreign key to investigations.
+D_risk,analyst_actions,sequence_no,integer,,1.00 to 90.00,0.0,Sequence no.
+D_risk,analyst_actions,action_type,string,,"Check device & address links, Decision recorded, Draft narrative, Open case, Pull transaction history, QC review, Request client information, Review alert details, Screen against watchlists",0.0,Action type.
+D_risk,analyst_actions,action_ts,timestamp,,2024-01-01 15:50:50 to 2026-09-30 23:49:34,0.0,Timestamp: action.
+D_risk,analyst_actions,analyst_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+D_risk,analyst_actions,duration_min,decimal,,0.60 to 249.40,0.0,Duration min (minutes).
+D_risk,analyst_actions,tool_used,string,,"AI Investigation Assistant, Email, KYCDesk, SentinelScreen, Spreadsheet",0.0,Tool used.
+D_risk,analyst_actions,note,string,,free text / identifier,0.0,Note.
+E_events,events,event_id,string,PK,free text / identifier,0.0,Identifier (event).
+E_events,events,industry,string,,"Automotive & Mobility, Beauty & Wellness, Construction & Infrastructure, Education & EdTech, Energy & Utilities, Fintech & Banking, Food & Beverage, Healthcare & Life Sciences, Legal & Compliance Tech, Logistics & Supply",0.0,Industry.
+E_events,events,city,string,,"Amsterdam, Bangkok, Dubai, Frankfurt, Ho Chi Minh City, Jakarta, Kuala Lumpur, Las Vegas, London, Manila, Mumbai, Shanghai, Singapore, Sydney, Tokyo",0.0,City.
+E_events,events,country,string,,"Australia, China, Germany, India, Indonesia, Japan, Malaysia, Netherlands, Philippines, Singapore, Thailand, UAE, United Kingdom, United States, Vietnam",0.0,Country.
+E_events,events,start_date,date,,2022-03-28 00:00:00 to 2026-12-15 00:00:00,0.0,Date: start date.
+E_events,events,end_date,date,,2022-03-31 00:00:00 to 2026-12-17 00:00:00,0.0,Date: end date.
+E_events,events,event_name,string,,free text / identifier,0.0,Event name.
+E_events,events,venue,string,,free text / identifier,0.0,Venue.
+E_events,events,format,string,,"Hybrid, In-person",0.0,Format.
+E_events,events,expected_visitors,integer,,"1,220.00 to 31,252.00",0.0,Expected visitors.
+E_events,events,status,string,,"Completed, Scheduled",0.0,Lifecycle status of the record.
+E_events,events,organizer_team_id,string,FK->teams,"TM0022, TM0023, TM0024, TM0025, TM0026, TM0046, TM0052, TM0064, TM0081, TM0083, TM0093, TM0094, TM0095, TM0112",0.0,Foreign key to teams.
+E_events,event_sessions,session_id,string,PK,free text / identifier,0.0,Identifier (session).
+E_events,event_sessions,event_id,string,FK->events,free text / identifier,0.0,Foreign key to events.
+E_events,event_sessions,track,string,,"Innovation Stage, Keynote, Regulatory Update, Startup Pitch, Technical, Workshop",0.0,Track.
+E_events,event_sessions,title,string,,free text / identifier,0.0,Title.
+E_events,event_sessions,start_ts,timestamp,,2022-03-28 09:00:00 to 2026-12-17 14:00:00,0.0,Timestamp: start.
+E_events,event_sessions,capacity,integer,,"50.00 to 1,500.00",0.0,Capacity.
+E_events,exhibitors,exhibitor_id,string,PK,free text / identifier,0.0,Identifier (exhibitor).
+E_events,exhibitors,event_id,string,FK->events,free text / identifier,0.0,Foreign key to events.
+E_events,exhibitors,entity_id,string,FK->business_entities,free text / identifier,0.0,Foreign key to business_entities.
+E_events,exhibitors,package_tier,string,,"Premium, Shell scheme, Space only, Sponsor",0.0,Package tier.
+E_events,exhibitors,booth_size_sqm,integer,,9.00 to 200.00,0.0,Booth size sqm.
+E_events,exhibitors,contract_value_usd,decimal,,"1,340.00 to 179,560.00",0.0,Contract value (USD).
+E_events,exhibitors,signed_date,date,,2021-05-03 00:00:00 to 2026-09-30 00:00:00,0.0,Date: signed date.
+E_events,exhibitors,account_manager_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+E_events,visitors,visitor_id,string,PK,free text / identifier,0.0,Identifier (visitor).
+E_events,visitors,first_name,string,,free text / identifier,0.0,First name.
+E_events,visitors,last_name,string,,free text / identifier,0.0,Last name.
+E_events,visitors,job_title,string,,"CEO, Compliance Officer, Consultant, Engineer, Legal Counsel, Librarian, Marketing Manager, Operations Director, Procurement Manager, Product Manager, Researcher, Student",0.0,Job title.
+E_events,visitors,company_entity_id,string,FK->business_entities,free text / identifier,35.03,Foreign key to business_entities.
+E_events,visitors,country,string,,"China, Germany, India, Japan, Netherlands, Philippines, United Kingdom, United States",0.0,Country.
+E_events,visitors,email_domain_hash,string,,free text / identifier,0.0,Email domain hash.
+E_events,visitors,created_at,timestamp,,2019-10-27 11:11:17 to 2026-09-30 00:00:00,0.0,Timestamp: created.
+E_events,registrations,registration_id,string,PK,free text / identifier,0.0,Identifier (registration).
+E_events,registrations,visitor_id,string,FK->visitors,free text / identifier,0.0,Foreign key to visitors.
+E_events,registrations,event_id,string,FK->events,free text / identifier,0.0,Foreign key to events.
+E_events,registrations,registered_at,timestamp,,2019-10-27 11:11:17 to 2026-09-30 23:55:03,0.0,Timestamp: registered.
+E_events,registrations,ticket_type,string,,"Delegate, Press, Student, VIP, Visitor",0.0,Ticket type.
+E_events,registrations,attended,boolean,,"False, True",3.53,Attended.
+E_events,registrations,checked_in_at,timestamp,,2022-03-28 08:00:02 to 2026-09-14 11:59:01,30.63,Timestamp: checked in.
+E_events,badge_scans,scan_id,string,PK,free text / identifier,0.0,Identifier (scan).
+E_events,badge_scans,registration_id,string,FK->registrations,free text / identifier,0.0,Foreign key to registrations.
+E_events,badge_scans,exhibitor_id,string,FK->exhibitors,free text / identifier,0.0,Foreign key to exhibitors.
+E_events,badge_scans,scan_ts,timestamp,,2022-03-28 09:00:12 to 2026-09-17 17:59:46,0.0,Timestamp: scan.
+E_events,badge_scans,scan_type,string,,"Booth visit, Demo, Lead capture, Meeting",0.0,Scan type.
+E_events,leads,lead_id,string,PK,free text / identifier,0.0,Identifier (lead).
+E_events,leads,exhibitor_id,string,FK->exhibitors,free text / identifier,0.0,Foreign key to exhibitors.
+E_events,leads,visitor_id,string,FK->visitors,free text / identifier,0.0,Foreign key to visitors.
+E_events,leads,event_id,string,FK->events,free text / identifier,0.0,Foreign key to events.
+E_events,leads,scan_id,string,FK->badge_scans,free text / identifier,0.0,Foreign key to badge_scans.
+E_events,leads,captured_at,timestamp,,2022-03-28 09:02:05 to 2026-09-17 17:59:46,0.0,Timestamp: captured.
+E_events,leads,lead_score,integer,,0.00 to 100.00,0.0,Exhibitor lead score 0-100.
+E_events,leads,lead_status,string,,"Contacted, Disqualified, New, Opportunity, Qualified, Won",0.0,Lead status.
+E_events,leads,follow_up_at,timestamp,,2022-03-29 09:38:38 to 2026-09-30 23:32:13,0.14,Timestamp: follow up.
+E_events,leads,converted_customer_id,string,FK->customers,free text / identifier,92.78,Foreign key to customers.
+E_events,leads,converted_at,timestamp,,2022-04-08 16:52:17 to 2026-09-30 21:15:24,92.78,Timestamp: converted.
+E_events,session_attendance,attendance_id,string,PK,free text / identifier,0.0,Identifier (attendance).
+E_events,session_attendance,registration_id,string,FK->registrations,free text / identifier,0.0,Foreign key to registrations.
+E_events,session_attendance,session_id,string,FK->event_sessions,free text / identifier,0.0,Foreign key to event_sessions.
+E_events,session_attendance,checked_in_at,timestamp,,2022-03-28 08:48:02 to 2026-09-17 15:17:48,0.0,Timestamp: checked in.
+E_events,event_feedback,feedback_id,string,PK,free text / identifier,0.0,Identifier (feedback).
+E_events,event_feedback,registration_id,string,FK->registrations,free text / identifier,0.0,Foreign key to registrations.
+E_events,event_feedback,event_id,string,FK->events,free text / identifier,0.0,Foreign key to events.
+E_events,event_feedback,nps,integer,,0.00 to 10.00,0.0,Nps.
+E_events,event_feedback,satisfaction,integer,,1.00 to 5.00,0.0,Satisfaction.
+E_events,event_feedback,comment,string,,"Decent mix of exhibitors, would like more startups., Found two potential suppliers, will come back next year., Good event overall, venue was a bit far., Great networking opportunities and very relevant exhibitors., Queue",35.06,Comment.
+E_events,event_feedback,submitted_at,timestamp,,2022-03-31 12:02:55 to 2026-09-26 23:22:59,0.0,Timestamp: submitted.
+F_customer,products,product_id,string,PK,free text / identifier,0.0,Identifier (product).
+F_customer,products,product_name,string,,free text / identifier,0.0,Product name.
+F_customer,products,division_id,string,FK->divisions,"DIV01, DIV02, DIV03, DIV04, DIV05",0.0,Foreign key to divisions.
+F_customer,products,product_line,string,,free text / identifier,0.0,Product line.
+F_customer,products,pricing_model,string,,"Annual subscription, Package, Per seat, Per transaction, Usage-based",0.0,Pricing model.
+F_customer,products,launch_date,date,,2008-01-14 00:00:00 to 2026-02-20 00:00:00,0.0,Date: launch date.
+F_customer,products,is_ai_enabled,boolean,,"False, True",0.0,Flag: ai enabled.
+F_customer,products,list_price_usd,decimal,,"1,500.00 to 84,100.00",0.0,List price (USD).
+F_customer,subscriptions,subscription_id,string,PK,free text / identifier,0.0,Identifier (subscription).
+F_customer,subscriptions,customer_id,string,FK->customers,free text / identifier,0.0,Foreign key to customers.
+F_customer,subscriptions,product_id,string,FK->products,free text / identifier,0.0,Foreign key to products.
+F_customer,subscriptions,start_date,date,,2021-01-01 00:00:00 to 2026-08-31 00:00:00,0.0,Date: start date.
+F_customer,subscriptions,end_date,date,,2021-12-31 00:00:00 to 2029-08-29 00:00:00,0.0,Date: end date.
+F_customer,subscriptions,seats,integer,,"1.00 to 3,270.00",0.0,Seats.
+F_customer,subscriptions,annual_value_usd,decimal,,"150.00 to 874,490.00",0.0,Annual value (USD).
+F_customer,subscriptions,currency,string,,"EUR, GBP, JPY, PHP, USD",0.0,Currency.
+F_customer,subscriptions,auto_renew,boolean,,"False, True",0.0,Auto renew.
+F_customer,subscriptions,status,string,,"Active, Cancelled, Expired",0.0,Lifecycle status of the record.
+F_customer,customers,customer_id,string,PK,free text / identifier,0.0,Identifier (customer).
+F_customer,customers,segment,string,,"Academic, Corporate, Events Client, Financial Institution, Government, Healthcare, Law Firm",0.0,Segment.
+F_customer,customers,institution_id,string,FK->institutions,free text / identifier,69.76,Foreign key to institutions.
+F_customer,customers,entity_id,string,FK->business_entities,free text / identifier,30.24,Foreign key to business_entities.
+F_customer,customers,customer_name,string,,free text / identifier,0.0,Customer name.
+F_customer,customers,country,string,,free text / identifier,0.0,Country.
+F_customer,customers,region,string,,"APAC, Americas, EMEA",0.0,Region.
+F_customer,customers,primary_division_id,string,FK->divisions,"DIV01, DIV02, DIV03, DIV04",0.0,Foreign key to divisions.
+F_customer,customers,tier,string,,"Key, Standard, Strategic",0.0,Tier.
+F_customer,customers,account_owner_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+F_customer,customers,created_date,date,,2012-01-02 00:00:00 to 2026-06-30 00:00:00,0.0,Date: created date.
+F_customer,customers,status,string,,"Active, Churned, Prospect",0.0,Lifecycle status of the record.
+F_customer,churn_events,churn_id,string,PK,free text / identifier,0.0,Identifier (churn).
+F_customer,churn_events,customer_id,string,FK->customers,free text / identifier,0.0,Foreign key to customers.
+F_customer,churn_events,churn_date,date,,2023-03-02 00:00:00 to 2026-09-15 00:00:00,0.0,Date: churn date.
+F_customer,churn_events,primary_subscription_id,string,FK->subscriptions,free text / identifier,0.0,Foreign key to subscriptions.
+F_customer,churn_events,churn_reason,string,,"Budget cuts, Low usage, Merger/acquisition, Moved to competitor, Poor support experience, Product gaps",0.0,Churn reason.
+F_customer,churn_events,arr_lost_usd,decimal,,"720.00 to 4,962,880.00",0.0,Arr lost (USD).
+F_customer,product_usage_monthly,usage_id,string,PK,free text / identifier,0.0,Identifier (usage).
+F_customer,product_usage_monthly,subscription_id,string,FK->subscriptions,free text / identifier,0.0,Foreign key to subscriptions.
+F_customer,product_usage_monthly,customer_id,string,FK->customers,free text / identifier,0.0,Foreign key to customers.
+F_customer,product_usage_monthly,product_id,string,FK->products,free text / identifier,0.0,Foreign key to products.
+F_customer,product_usage_monthly,usage_month,date,,2021-01-01 00:00:00 to 2026-09-01 00:00:00,0.0,Usage month.
+F_customer,product_usage_monthly,active_users,integer,,"0.00 to 3,435.00",0.0,Active users.
+F_customer,product_usage_monthly,sessions,integer,,"0.00 to 21,656.00",0.0,Sessions.
+F_customer,product_usage_monthly,searches,integer,,"0.00 to 71,314.00",0.0,Searches.
+F_customer,product_usage_monthly,downloads,integer,,"0.00 to 15,236.00",0.0,Downloads.
+F_customer,product_usage_monthly,api_calls,integer,,"0.00 to 1,515,738.00",0.0,Api calls.
+F_customer,support_cases,case_id,string,PK,free text / identifier,0.0,"Case identifier (in process_event_log: the source record ID, e.g. INV/CS/ALR/MS...)."
+F_customer,support_cases,customer_id,string,FK->customers,free text / identifier,0.0,Foreign key to customers.
+F_customer,support_cases,product_id,string,FK->products,free text / identifier,0.0,Foreign key to products.
+F_customer,support_cases,division_id,string,FK->divisions,"DIV01, DIV02, DIV03, DIV04",0.0,Foreign key to divisions.
+F_customer,support_cases,team_id,string,FK->teams,free text / identifier,0.0,Foreign key to teams.
+F_customer,support_cases,agent_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+F_customer,support_cases,channel,string,,"Chat, Email, Phone, Portal, Web form",0.0,Channel.
+F_customer,support_cases,category,string,,"Access & Login, Account Administration, Billing & Invoicing, Content Access, Data Feed & API, Event Services, Platform Error, Risk Screening, Search & Results, Training & Onboarding",0.0,Category.
+F_customer,support_cases,subcategory,string,,free text / identifier,0.0,Subcategory.
+F_customer,support_cases,subject,string,,free text / identifier,0.0,Subject.
+F_customer,support_cases,priority,string,,"P1, P2, P3, P4",0.0,Priority.
+F_customer,support_cases,created_at,timestamp,,2022-01-01 09:56:27 to 2026-09-30 00:00:00,0.0,Timestamp: created.
+F_customer,support_cases,first_response_at,timestamp,,2022-01-01 10:07:18 to 2026-09-30 05:40:58,0.0,Timestamp: first response.
+F_customer,support_cases,resolved_at,timestamp,,2022-01-01 14:14:08 to 2026-09-30 23:38:45,0.07,Timestamp: resolved.
+F_customer,support_cases,status,string,,"In progress, Open, Pending customer, Resolved",0.0,Lifecycle status of the record.
+F_customer,support_cases,sla_hours,integer,,4.00 to 72.00,0.0,Sla hours.
+F_customer,support_cases,sla_met,boolean,,"False, True",0.07,True if resolved within SLA (null while open).
+F_customer,support_cases,handle_time_min,decimal,,1.70 to 98.30,0.0,Agent handling time in minutes.
+F_customer,support_cases,csat,decimal,,1.00 to 5.00,54.78,Customer satisfaction score 1-5 (null if no survey response).
+F_customer,support_cases,reopened,boolean,,"False, True",0.0,Reopened.
+F_customer,support_cases,escalated,boolean,,"False, True",0.0,Escalated.
+F_customer,support_cases,kb_article_id,string,FK->knowledge_articles,free text / identifier,46.5,Knowledge article cited in the resolution.
+F_customer,support_cases,resolution_summary,string,,free text / identifier,0.07,Resolution summary.
+F_customer,support_cases,ai_copilot_used,boolean,,"False, True",0.0,Ai copilot used.
+F_customer,case_interactions,interaction_id,string,PK,free text / identifier,0.0,Identifier (interaction).
+F_customer,case_interactions,case_id,string,FK->support_cases,free text / identifier,0.0,"Case identifier (in process_event_log: the source record ID, e.g. INV/CS/ALR/MS...)."
+F_customer,case_interactions,sequence_no,integer,,1.00 to 10.00,0.0,Sequence no.
+F_customer,case_interactions,channel,string,,"Chat, Email, Phone, Portal, Web form",0.0,Channel.
+F_customer,case_interactions,direction,string,,"Inbound, Outbound",0.0,Direction.
+F_customer,case_interactions,author_type,string,,"Agent, Bot, Customer",0.0,Author type.
+F_customer,case_interactions,employee_id,string,FK->employees,free text / identifier,56.14,Foreign key to employees.
+F_customer,case_interactions,interaction_ts,timestamp,,2022-01-01 09:56:27 to 2026-09-30 23:59:59,0.0,Timestamp: interaction.
+F_customer,case_interactions,message_text,string,,free text / identifier,0.0,Message text.
+F_customer,case_interactions,ai_drafted,boolean,,"False, True",0.0,Ai drafted.
+F_customer,feature_requests,feature_request_id,string,PK,free text / identifier,0.0,Identifier (feature request).
+F_customer,feature_requests,customer_id,string,FK->customers,free text / identifier,0.0,Foreign key to customers.
+F_customer,feature_requests,product_id,string,FK->products,free text / identifier,0.0,Foreign key to products.
+F_customer,feature_requests,case_id,string,FK->support_cases,free text / identifier,61.0,"Case identifier (in process_event_log: the source record ID, e.g. INV/CS/ALR/MS...)."
+F_customer,feature_requests,submitted_at,timestamp,,2022-01-01 00:00:00 to 2026-09-30 00:00:00,0.0,Timestamp: submitted.
+F_customer,feature_requests,title,string,,free text / identifier,0.0,Title.
+F_customer,feature_requests,votes,integer,,0.00 to 110.00,0.0,Votes.
+F_customer,feature_requests,status,string,,"Declined, Delivered, New, Planned, Under review",0.0,Lifecycle status of the record.
+F_customer,feature_requests,linked_project_id,string,FK->projects,free text / identifier,72.54,Foreign key to projects.
+F_customer,renewal_opportunities,renewal_opportunity_id,string,PK,free text / identifier,0.0,Identifier (renewal opportunity).
+F_customer,renewal_opportunities,subscription_id,string,FK->subscriptions,free text / identifier,0.0,Foreign key to subscriptions.
+F_customer,renewal_opportunities,customer_id,string,FK->customers,free text / identifier,0.0,Foreign key to customers.
+F_customer,renewal_opportunities,renewal_due_date,date,,2023-01-01 00:00:00 to 2029-08-29 00:00:00,0.0,Date: renewal due date.
+F_customer,renewal_opportunities,forecast_value_usd,decimal,,"380.00 to 812,990.00",0.0,Forecast value (USD).
+F_customer,renewal_opportunities,owner_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+F_customer,renewal_opportunities,stage,string,,"Closed, Engaged, Identified, Negotiation, Proposal",0.0,Lifecycle stage.
+F_customer,renewal_opportunities,outcome,string,,"Lost, Won, Won - downsell, Won - upsell",27.07,Final outcome / result of the record.
+G_finance,cost_centers,cost_center_id,string,PK,free text / identifier,0.0,Identifier (cost center).
+G_finance,cost_centers,department_id,string,FK->departments,free text / identifier,0.0,Foreign key to departments.
+G_finance,cost_centers,division_id,string,FK->divisions,"DIV01, DIV02, DIV03, DIV04, DIV05",0.0,Foreign key to divisions.
+G_finance,cost_centers,cost_center_name,string,,free text / identifier,0.0,Cost center name.
+G_finance,cost_centers,site_id,string,FK->sites,"SITE01, SITE02",0.0,Foreign key to sites.
+G_finance,suppliers,supplier_id,string,PK,free text / identifier,0.0,Identifier (supplier).
+G_finance,suppliers,entity_id,string,FK->business_entities,free text / identifier,0.0,Foreign key to business_entities.
+G_finance,suppliers,supplier_name,string,,free text / identifier,0.0,Supplier name.
+G_finance,suppliers,category,string,,"Content Vendors, Data Providers, Events Services, Facilities, IT Services, Professional Services, Software, Travel",0.0,Category.
+G_finance,suppliers,country,string,,free text / identifier,0.0,Country.
+G_finance,suppliers,payment_terms_days,integer,,15.00 to 60.00,0.0,Payment terms days.
+G_finance,suppliers,risk_tier,string,,"High, Low, Medium",0.0,Risk tier.
+G_finance,suppliers,preferred,boolean,,"False, True",0.0,Preferred.
+G_finance,suppliers,onboarded_date,date,,2014-01-08 00:00:00 to 2026-08-31 00:00:00,0.0,Date: onboarded date.
+G_finance,suppliers,status,string,,"Active, Blocked, Inactive",0.0,Lifecycle status of the record.
+G_finance,supplier_enrollment_requests,enrollment_request_id,string,PK,free text / identifier,0.0,Identifier (enrollment request).
+G_finance,supplier_enrollment_requests,supplier_id,string,FK->suppliers,free text / identifier,0.0,Foreign key to suppliers.
+G_finance,supplier_enrollment_requests,requested_by_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+G_finance,supplier_enrollment_requests,submitted_at,timestamp,,2013-11-29 12:14:00 to 2026-08-24 06:22:12,0.0,Timestamp: submitted.
+G_finance,supplier_enrollment_requests,documents_complete_first_pass,boolean,,"False, True",0.0,Documents complete first pass.
+G_finance,supplier_enrollment_requests,tax_document_ok,boolean,,"False, True",0.0,Tax document ok.
+G_finance,supplier_enrollment_requests,bank_details_ok,boolean,,"False, True",0.0,Bank details ok.
+G_finance,supplier_enrollment_requests,sanctions_screen_ok,boolean,,"False, True",0.0,Sanctions screen ok.
+G_finance,supplier_enrollment_requests,turnaround_days,decimal,,1.10 to 131.30,0.0,Turnaround days.
+G_finance,supplier_enrollment_requests,decided_at,timestamp,,2013-12-12 05:45:29 to 2026-09-11 14:10:41,0.03,Timestamp: decided.
+G_finance,supplier_enrollment_requests,status,string,,"Approved, Approved - update, Approved after remediation, Pending, Rejected - duplicate",0.0,Lifecycle status of the record.
+G_finance,purchase_orders,po_id,string,PK,free text / identifier,0.0,Identifier (po).
+G_finance,purchase_orders,supplier_id,string,FK->suppliers,free text / identifier,0.0,Foreign key to suppliers.
+G_finance,purchase_orders,cost_center_id,string,FK->cost_centers,free text / identifier,0.0,Foreign key to cost_centers.
+G_finance,purchase_orders,requester_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+G_finance,purchase_orders,approver_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+G_finance,purchase_orders,po_date,date,,2022-01-01 00:00:00 to 2026-09-30 00:00:00,0.0,Date: po date.
+G_finance,purchase_orders,currency,string,,"EUR, GBP, JPY, PHP, USD",0.0,Currency.
+G_finance,purchase_orders,po_amount,decimal,,"63.79 to 28,372,433.29",0.0,Po amount.
+G_finance,purchase_orders,status,string,,"Cancelled, Closed, Open, Partially invoiced",0.0,Lifecycle status of the record.
+G_finance,invoices,invoice_id,string,PK,free text / identifier,0.0,Identifier (invoice).
+G_finance,invoices,supplier_id,string,FK->suppliers,free text / identifier,0.0,Foreign key to suppliers.
+G_finance,invoices,po_id,string,FK->purchase_orders,free text / identifier,6.08,Foreign key to purchase_orders.
+G_finance,invoices,currency,string,,"EUR, GBP, JPY, PHP, USD",0.0,Currency.
+G_finance,invoices,invoice_date,date,,2022-01-04 00:00:00 to 2026-09-30 00:00:00,0.0,Date: invoice date.
+G_finance,invoices,net_amount,decimal,,"13.76 to 33,194,927.24",0.0,Net amount.
+G_finance,invoices,tax_amount,decimal,,"0.00 to 4,063,982.02",0.0,Tax amount.
+G_finance,invoices,gross_amount,decimal,,"16.51 to 34,854,673.60",0.0,Gross amount.
+G_finance,invoices,amount_usd,decimal,,"14.27 to 399,411.28",0.0,Amount converted to USD at a fixed synthetic FX rate.
+G_finance,invoices,invoice_number,string,,free text / identifier,0.0,Invoice number.
+G_finance,invoices,received_at,timestamp,,2022-01-07 00:23:09 to 2026-09-30 23:59:59,0.0,Timestamp: received.
+G_finance,invoices,due_date,date,,2022-01-27 00:00:00 to 2026-11-29 00:00:00,0.0,Date: due date.
+G_finance,invoices,approval_level,string,,"L1 - Team Lead, L2 - Manager, L3 - Director",0.0,"Approval authority required by amount: L1 < 10k USD, L2 < 50k USD, L3 >= 50k USD."
+G_finance,invoices,channel,string,,"EDI, Email, Supplier portal",0.0,Channel.
+G_finance,invoices,ocr_confidence,decimal,,0.56 to 1.00,44.72,OCR/IDP extraction confidence for emailed invoices.
+G_finance,invoices,processor_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+G_finance,invoices,status,string,,"Approved, On hold - exception, Paid",0.0,Lifecycle status of the record.
+G_finance,invoice_lines,invoice_line_id,string,PK,free text / identifier,0.0,Identifier (invoice line).
+G_finance,invoice_lines,invoice_id,string,FK->invoices,free text / identifier,0.0,Foreign key to invoices.
+G_finance,invoice_lines,line_no,integer,,1.00 to 20.00,0.0,Line no.
+G_finance,invoice_lines,description,string,,"Consulting services, Copyediting & typesetting, Data subscription, Event services, Facility maintenance, Licence renewal, Travel & accommodation",0.0,Description.
+G_finance,invoice_lines,quantity,decimal,,0.00 to 75.00,0.0,Quantity.
+G_finance,invoice_lines,unit_price,decimal,,"0.00 to 8,184,163.44",0.0,Unit price.
+G_finance,invoice_lines,line_amount,decimal,,"0.00 to 26,672,317.20",0.0,Line amount.
+G_finance,invoice_lines,gl_account,string,,"6100 Software, 6200 Professional fees, 6300 Facilities, 6400 Content services, 6500 Travel, 6600 Events, 6700 Data purchases",0.0,Gl account.
+G_finance,invoice_lines,cost_center_id,string,FK->cost_centers,free text / identifier,0.0,Foreign key to cost_centers.
+G_finance,invoice_exceptions,exception_id,string,PK,free text / identifier,0.0,Identifier (exception).
+G_finance,invoice_exceptions,invoice_id,string,FK->invoices,free text / identifier,0.0,Foreign key to invoices.
+G_finance,invoice_exceptions,exception_type,string,,"Bank details changed, Duplicate suspected, Missing PO, Missing goods receipt, Price mismatch, Quantity mismatch, Tax error",0.0,Exception type.
+G_finance,invoice_exceptions,raised_at,timestamp,,2022-01-08 05:36:41 to 2026-09-30 23:59:59,0.0,Timestamp: raised.
+G_finance,invoice_exceptions,resolved_at,timestamp,,2022-01-09 14:19:40 to 2026-09-30 23:58:01,5.44,Timestamp: resolved.
+G_finance,invoice_exceptions,resolver_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+G_finance,invoice_exceptions,resolution,string,,"Approved by budget owner, Corrected and approved, Credit note requested, PO amended, Rejected to supplier",5.44,Resolution.
+G_finance,payments,payment_id,string,PK,free text / identifier,0.0,Identifier (payment).
+G_finance,payments,invoice_id,string,FK->invoices,free text / identifier,0.0,Foreign key to invoices.
+G_finance,payments,paid_at,timestamp,,2022-01-25 10:00:00 to 2026-09-30 10:00:00,0.0,Timestamp: paid.
+G_finance,payments,amount,decimal,,"16.51 to 34,854,673.60",0.0,Amount.
+G_finance,payments,currency,string,,"EUR, GBP, JPY, PHP, USD",0.0,Currency.
+G_finance,payments,method,string,,"Bank transfer, Check, Virtual card, Wire",0.0,Method.
+G_finance,payments,payment_run_id,string,,free text / identifier,0.0,Identifier (payment run).
+G_finance,payments,days_vs_due,integer,,-26.00 to 26.00,0.0,Days vs due.
+G_finance,opex_budget_vs_actual,opex_row_id,string,PK,free text / identifier,0.0,Identifier (opex row).
+G_finance,opex_budget_vs_actual,cost_center_id,string,FK->cost_centers,free text / identifier,0.0,Foreign key to cost_centers.
+G_finance,opex_budget_vs_actual,division_id,string,FK->divisions,"DIV01, DIV02, DIV03, DIV04, DIV05",0.0,Foreign key to divisions.
+G_finance,opex_budget_vs_actual,month,date,,2022-01-01 00:00:00 to 2026-09-01 00:00:00,0.0,Month.
+G_finance,opex_budget_vs_actual,budget_php,decimal,,"755,000.00 to 14,592,000.00",0.0,Budget (PHP).
+G_finance,opex_budget_vs_actual,actual_php,decimal,,"688,000.00 to 16,252,000.00",0.0,Actual (PHP).
+G_finance,opex_budget_vs_actual,variance_php,decimal,,"-2,010,000.00 to 2,378,000.00",0.0,Variance (PHP).
+G_finance,opex_budget_vs_actual,variance_pct,decimal,,-22.87 to 24.07,0.0,Variance (%).
+H_technology,applications,app_id,string,PK,free text / identifier,0.0,Identifier (app).
+H_technology,applications,app_name,string,,free text / identifier,0.0,App name.
+H_technology,applications,division_id,string,FK->divisions,"DIV01, DIV02, DIV03, DIV04, DIV05",0.0,Foreign key to divisions.
+H_technology,applications,owner_team_id,string,FK->teams,free text / identifier,0.0,Foreign key to teams.
+H_technology,applications,purpose,string,,free text / identifier,0.0,Purpose.
+H_technology,applications,criticality,string,,"Tier 1, Tier 2, Tier 3",0.0,Criticality.
+H_technology,applications,hosting,string,,"AWS, Azure, On-premises, SaaS",0.0,Hosting.
+H_technology,applications,tech_stack,string,,".NET, Go, Java/Spring, Low-code (Power Platform), Node.js/React, Python/FastAPI, RPA, Vendor SaaS",0.0,Tech stack.
+H_technology,applications,data_classification,string,,"Confidential, Internal, Public, Restricted",0.0,Data classification.
+H_technology,applications,go_live_date,date,,2014-01-17 00:00:00 to 2026-06-29 00:00:00,0.0,Date: go live date.
+H_technology,changes,change_id,string,PK,free text / identifier,0.0,Identifier (change).
+H_technology,changes,app_id,string,FK->applications,free text / identifier,0.0,Foreign key to applications.
+H_technology,changes,change_type,string,,"Emergency, Normal, Standard",0.0,Change type.
+H_technology,changes,requested_by_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+H_technology,changes,requested_at,timestamp,,2022-01-01 00:00:00 to 2026-09-30 00:00:00,0.0,Timestamp: requested.
+H_technology,changes,approved_at,timestamp,,2022-01-01 23:40:05 to 2026-09-30 21:05:29,0.1,Timestamp: approved.
+H_technology,changes,implemented_at,timestamp,,2022-01-03 07:45:15 to 2026-09-30 23:22:26,0.28,Timestamp: implemented.
+H_technology,changes,risk_level,string,,"High, Low, Medium",0.0,Risk level.
+H_technology,changes,outcome,string,,"Failed, Pending approval, Rolled back, Scheduled, Successful, Successful with issues",0.0,Final outcome / result of the record.
+H_technology,problems,problem_id,string,PK,free text / identifier,0.0,Identifier (problem).
+H_technology,problems,app_id,string,FK->applications,free text / identifier,0.0,Foreign key to applications.
+H_technology,problems,root_cause_category,string,,"Capacity, Configuration error, Data issue, Failed change, Network, Software defect, Third-party outage",0.0,Root cause category.
+H_technology,problems,root_cause_summary,string,,"Database connection pool exhausted at peak, Deployment introduced regression, Expired certificate / misconfigured SSO, Intermittent packet loss on VPN, Malformed upstream feed file, Null handling bug in batch job, Vendor",0.0,Root cause summary.
+H_technology,problems,opened_at,timestamp,,2022-01-03 12:13:39 to 2026-09-29 10:52:14,0.0,Timestamp: opened.
+H_technology,problems,closed_at,timestamp,,2022-01-12 14:01:00 to 2026-09-27 16:35:59,1.5,Timestamp: closed.
+H_technology,problems,known_error,boolean,,"False, True",0.0,Known error.
+H_technology,it_tickets,ticket_id,string,PK,free text / identifier,0.0,Identifier (ticket).
+H_technology,it_tickets,ticket_type,string,,"Access, Change Request, Incident, Question, Service Request",0.0,Ticket type.
+H_technology,it_tickets,app_id,string,FK->applications,free text / identifier,0.0,Foreign key to applications.
+H_technology,it_tickets,requester_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+H_technology,it_tickets,assignment_group_team_id,string,FK->teams,"TM0034, TM0035, TM0036, TM0037, TM0043",0.0,Foreign key to teams.
+H_technology,it_tickets,assignee_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+H_technology,it_tickets,priority,string,,"P1, P2, P3, P4",0.0,Priority.
+H_technology,it_tickets,created_at,timestamp,,2022-01-01 00:00:00 to 2026-09-30 00:00:00,0.0,Timestamp: created.
+H_technology,it_tickets,category,string,,"Access request, Data request, Error message, Hardware, How-to, Login / SSO, Performance, Software install",0.0,Category.
+H_technology,it_tickets,short_description,string,,free text / identifier,0.0,Short description.
+H_technology,it_tickets,sla_hours,integer,,4.00 to 72.00,0.0,Sla hours.
+H_technology,it_tickets,resolved_at,timestamp,,2022-01-01 03:12:59 to 2026-09-30 22:39:17,0.07,Timestamp: resolved.
+H_technology,it_tickets,status,string,,"In Progress, New, Pending user, Resolved",0.0,Lifecycle status of the record.
+H_technology,it_tickets,sla_met,boolean,,"False, True",0.07,True if resolved within SLA (null while open).
+H_technology,it_tickets,kb_article_id,string,FK->knowledge_articles,free text / identifier,55.17,Knowledge article cited in the resolution.
+H_technology,it_tickets,resolution_notes,string,,free text / identifier,0.07,Resolution notes.
+H_technology,it_tickets,reopened,boolean,,"False, True",0.0,Reopened.
+H_technology,incidents,incident_id,string,PK,free text / identifier,0.0,Identifier (incident).
+H_technology,incidents,ticket_id,string,FK->it_tickets,free text / identifier,0.0,Foreign key to it_tickets.
+H_technology,incidents,app_id,string,FK->applications,free text / identifier,0.0,Foreign key to applications.
+H_technology,incidents,severity,string,,"Sev1, Sev2, Sev3, Sev4",0.0,Severity.
+H_technology,incidents,started_at,timestamp,,2021-12-31 22:00:29 to 2026-09-29 23:22:44,0.0,Timestamp: started.
+H_technology,incidents,detected_at,timestamp,,2022-01-01 00:00:00 to 2026-09-30 00:00:00,0.0,Timestamp: detected.
+H_technology,incidents,resolved_at,timestamp,,2022-01-01 03:12:59 to 2026-09-30 09:31:24,0.04,Timestamp: resolved.
+H_technology,incidents,impacted_users,integer,,"1.00 to 8,894.00",0.0,Impacted users.
+H_technology,incidents,caused_by_change_id,string,FK->changes,free text / identifier,73.64,Foreign key to changes.
+H_technology,incidents,problem_id,string,FK->problems,free text / identifier,49.94,Foreign key to problems.
+H_technology,access_requests,access_request_id,string,PK,free text / identifier,0.0,Identifier (access request).
+H_technology,access_requests,requester_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+H_technology,access_requests,app_id,string,FK->applications,free text / identifier,0.0,Foreign key to applications.
+H_technology,access_requests,access_type,string,,"Data Access - Analytics, Data Access - PII, Elevated, Standard",0.0,Access type.
+H_technology,access_requests,justification,string,,"Data extract for AI pilot analysis, Data extract for Daybreak analysis, Data extract for EnSightful-like analytics analysis, Data extract for PIP analysis, Data extract for audit analysis, Data extract for month-end anal",0.0,Justification.
+H_technology,access_requests,requested_at,timestamp,,2022-01-01 00:00:00 to 2026-09-30 00:00:00,0.0,Timestamp: requested.
+H_technology,access_requests,completed_at,timestamp,,2022-01-01 06:54:45 to 2026-09-30 23:10:12,0.2,Timestamp: completed.
+H_technology,access_requests,status,string,,"Completed, Pending, Rejected",0.0,Lifecycle status of the record.
+H_technology,access_requests,turnaround_hours,decimal,,"0.70 to 1,854.80",0.2,Turnaround hours.
+H_technology,access_request_approvals,approval_id,string,PK,free text / identifier,0.0,Identifier (approval).
+H_technology,access_request_approvals,access_request_id,string,FK->access_requests,free text / identifier,0.0,Foreign key to access_requests.
+H_technology,access_request_approvals,step_no,integer,,1.00 to 5.00,0.0,Step no.
+H_technology,access_request_approvals,approval_step,string,,"Data Owner, InfoSec, Manager, Privacy, Provisioning",0.0,Approval step.
+H_technology,access_request_approvals,approver_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+H_technology,access_request_approvals,assigned_at,timestamp,,2022-01-01 00:00:00 to 2026-09-30 23:46:18,0.0,Timestamp: assigned.
+H_technology,access_request_approvals,decided_at,timestamp,,2022-01-01 03:32:05 to 2026-09-30 23:46:18,0.07,Timestamp: decided.
+H_technology,access_request_approvals,decision,string,,"Approved, Pending, Rejected",0.0,Decision.
+H_technology,system_events,system_event_id,string,PK,free text / identifier,0.0,Identifier (system event).
+H_technology,system_events,app_id,string,FK->applications,free text / identifier,0.0,Foreign key to applications.
+H_technology,system_events,event_ts,timestamp,,2022-01-01 06:45:01 to 2026-09-30 00:00:00,0.0,Event timestamp (process-mining 'time:timestamp').
+H_technology,system_events,event_type,string,,"api_call, auth, db_query, job_run, request",0.0,Event type.
+H_technology,system_events,severity,string,,"ERROR, INFO, WARN",0.0,Severity.
+H_technology,system_events,latency_ms,integer,,"17.00 to 25,369.00",0.0,Latency ms.
+H_technology,system_events,error_code,string,,"DB_TIMEOUT, E401, E429, E500, E503, OOM",96.26,Error code.
+H_technology,system_events,host,string,,free text / identifier,0.0,Host.
+H_technology,system_events,user_employee_id,string,FK->employees,free text / identifier,80.02,Foreign key to employees.
+I_process,process_definitions,process_id,string,PK,free text / identifier,0.0,Identifier (process).
+I_process,process_definitions,process_name,string,,free text / identifier,0.0,Process name.
+I_process,process_definitions,division_id,string,FK->divisions,"DIV01, DIV02, DIV03, DIV04, DIV05",0.0,Foreign key to divisions.
+I_process,process_definitions,owner_department_id,string,FK->departments,free text / identifier,0.0,Foreign key to departments.
+I_process,process_definitions,source_table,string,,"access_requests, invoices, it_tickets, kyc_cases, manuscripts, risk_alerts, supplier_enrollment_requests, support_cases",80.0,Source table.
+I_process,process_definitions,sla_hours,integer,,"24.00 to 1,440.00",0.0,Sla hours.
+I_process,process_definitions,has_event_log,boolean,,"False, True",0.0,Flag: event log.
+I_process,process_definitions,standard_path,string,,"Alert generated > Alert triaged > Gather entity data > Screen watchlists > Analyst review > Escalate to investigation > Disposition recorded, Case created > Case categorised > Assigned to agent > First response sent > In",0.0,Standard path.
+I_process,process_activities,activity_id,string,PK,free text / identifier,0.0,Identifier (activity).
+I_process,process_activities,process_id,string,FK->process_definitions,free text / identifier,0.0,Foreign key to process_definitions.
+I_process,process_activities,activity_name,string,,free text / identifier,0.0,Activity name.
+I_process,process_activities,standard_sequence,integer,,1.00 to 10.00,0.0,Standard sequence.
+I_process,process_activities,is_manual,boolean,,"False, True",0.0,Flag: manual.
+I_process,process_activities,rule_based_pct,integer,,15.00 to 100.00,0.0,Rule based (%).
+I_process,process_activities,standard_effort_min,integer,,0.00 to 39.00,0.0,Standard effort min (minutes).
+I_process,process_event_log,event_id,string,PK,free text / identifier,0.0,Identifier (event).
+I_process,process_event_log,case_id,string,,free text / identifier,0.0,"Case identifier (in process_event_log: the source record ID, e.g. INV/CS/ALR/MS...)."
+I_process,process_event_log,process_id,string,FK->process_definitions,"PRC001, PRC002, PRC003, PRC004, PRC005, PRC006, PRC007, PRC008",0.0,Foreign key to process_definitions.
+I_process,process_event_log,activity,string,,free text / identifier,0.0,Process activity name (process-mining 'concept:name').
+I_process,process_event_log,activity_id,string,FK->process_activities,free text / identifier,4.56,Foreign key to process_activities.
+I_process,process_event_log,event_ts,timestamp,,2013-12-17 08:02:08 to 2026-09-30 23:59:59,0.0,Event timestamp (process-mining 'time:timestamp').
+I_process,process_event_log,resource_employee_id,string,FK->employees,free text / identifier,0.0,Employee who performed the activity (process-mining 'org:resource').
+I_process,process_event_log,system_app_id,string,FK->applications,"APP0001, APP0006, APP0007, APP0010, APP0011, APP0012, APP0013",0.0,Foreign key to applications.
+I_process,process_event_log,cost_php,decimal,,0.00 to 911.75,0.0,Cost (PHP).
+I_process,process_event_log,lifecycle,string,,complete,0.0,Lifecycle.
+I_process,automation_candidates,candidate_id,string,PK,free text / identifier,0.0,Identifier (candidate).
+I_process,automation_candidates,process_id,string,FK->process_definitions,"PRC001, PRC002, PRC004, PRC005, PRC006, PRC007, PRC008",0.0,Foreign key to process_definitions.
+I_process,automation_candidates,activity_id,string,FK->process_activities,free text / identifier,0.0,Foreign key to process_activities.
+I_process,automation_candidates,activity_name,string,,free text / identifier,0.0,Activity name.
+I_process,automation_candidates,annual_volume_2023,integer,,"245.00 to 25,501.00",0.0,Annual volume 2023.
+I_process,automation_candidates,avg_effort_min,integer,,1.00 to 20.00,0.0,Avg effort min (minutes).
+I_process,automation_candidates,annual_hours,decimal,,"21.00 to 2,975.00",0.0,Annual hours.
+I_process,automation_candidates,rule_based_pct,integer,,60.00 to 95.00,0.0,Rule based (%).
+I_process,automation_candidates,exception_rate_pct,decimal,,2.00 to 39.00,0.0,Exception rate (%).
+I_process,automation_candidates,automation_score,decimal,,24.90 to 61.50,0.0,Automation score.
+I_process,automation_candidates,recommended_approach,string,,"IDP + human review, RPA / rules engine",0.0,Recommended approach.
+I_process,automation_candidates,survey_date,date,,2023-12-15 00:00:00 to 2023-12-15 00:00:00,0.0,Date: survey date.
+J_ai_portfolio,ai_models,model_id,string,PK,free text / identifier,0.0,Identifier (model).
+J_ai_portfolio,ai_models,model_type,string,,"Anomaly Detection, Classifier, Embedding, Entity Resolution, Forecasting, LLM, NER, OCR/IDP, Ranking",0.0,Model type.
+J_ai_portfolio,ai_models,model_name,string,,free text / identifier,0.0,Model name.
+J_ai_portfolio,ai_models,provider,string,,"In-house, Open-source, Open-weights (self-hosted), Vendor A (hosted LLM), Vendor B (hosted LLM), Vendor C",0.0,Provider.
+J_ai_portfolio,ai_models,hosting,string,,"AWS Bedrock-style managed, AWS ECS, AWS SageMaker-style, Vendor API",0.0,Hosting.
+J_ai_portfolio,ai_models,owner_team_id,string,FK->teams,"TM0040, TM0051",0.0,Foreign key to teams.
+J_ai_portfolio,ai_models,risk_classification,string,,"High, Low, Medium",0.0,Risk classification.
+J_ai_portfolio,ai_models,created_date,date,,2022-06-16 00:00:00 to 2026-06-26 00:00:00,0.0,Date: created date.
+J_ai_portfolio,model_versions,model_version_id,string,PK,free text / identifier,0.0,Identifier (model version).
+J_ai_portfolio,model_versions,model_id,string,FK->ai_models,free text / identifier,0.0,Foreign key to ai_models.
+J_ai_portfolio,model_versions,version,string,,"v1.0, v2.0, v3.0, v4.0",0.0,Version.
+J_ai_portfolio,model_versions,released_date,date,,2022-08-01 00:00:00 to 2026-09-29 00:00:00,0.0,Date: released date.
+J_ai_portfolio,model_versions,eval_accuracy,decimal,,0.72 to 0.99,0.0,Eval accuracy.
+J_ai_portfolio,model_versions,eval_hallucination_rate,decimal,,0.01 to 0.12,71.88,Eval hallucination rate.
+J_ai_portfolio,model_versions,status,string,,"Production, Retired, Staging",0.0,Lifecycle status of the record.
+J_ai_portfolio,ai_use_cases,use_case_id,string,PK,free text / identifier,0.0,Identifier (use case).
+J_ai_portfolio,ai_use_cases,use_case_name,string,,free text / identifier,0.0,Use case name.
+J_ai_portfolio,ai_use_cases,division_id,string,FK->divisions,"DIV01, DIV02, DIV03, DIV04, DIV05",0.0,Foreign key to divisions.
+J_ai_portfolio,ai_use_cases,process_id,string,FK->process_definitions,free text / identifier,0.0,Foreign key to process_definitions.
+J_ai_portfolio,ai_use_cases,archetype,string,,"Agent, Analytics, Copilot, ML Model, RAG Assistant, RPA",0.0,Archetype.
+J_ai_portfolio,ai_use_cases,stage,string,,"Idea, Pilot, PoC, Retired, Scaled",0.0,Lifecycle stage.
+J_ai_portfolio,ai_use_cases,primary_kpi,string,,"Average handling time (min), Backlog, CSAT, Classification minutes per document, Cost per transaction, Error rate, Exception resolution hours, False positive rate, Handling time, Integrity cases detected pre-publication,",0.0,Primary kpi.
+J_ai_portfolio,ai_use_cases,owner_team_id,string,FK->teams,free text / identifier,0.0,Foreign key to teams.
+J_ai_portfolio,ai_use_cases,sponsor_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+J_ai_portfolio,ai_use_cases,product_owner_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+J_ai_portfolio,ai_use_cases,model_id,string,FK->ai_models,free text / identifier,29.67,Foreign key to ai_models.
+J_ai_portfolio,ai_use_cases,idea_date,date,,2022-03-09 00:00:00 to 2026-07-31 00:00:00,0.0,Date: idea date.
+J_ai_portfolio,ai_use_cases,poc_date,date,,2022-04-22 00:00:00 to 2026-09-28 00:00:00,33.83,Date: poc date.
+J_ai_portfolio,ai_use_cases,pilot_date,date,,2022-08-17 00:00:00 to 2026-09-29 00:00:00,61.0,Date: pilot date.
+J_ai_portfolio,ai_use_cases,scaled_date,date,,2022-11-07 00:00:00 to 2026-09-20 00:00:00,79.33,Date: scaled date.
+J_ai_portfolio,ai_use_cases,retired_date,date,,2023-02-23 00:00:00 to 2027-02-26 00:00:00,92.33,Date: retired date.
+J_ai_portfolio,ai_use_cases,expected_annual_value_usd,decimal,,"11,000.00 to 3,602,000.00",0.0,Business-case annual value (USD).
+J_ai_portfolio,ai_use_cases,realized_annual_value_usd,decimal,,"0.00 to 1,034,000.00",0.0,Annualised value realised so far (USD).
+J_ai_portfolio,ai_use_cases,hours_saved_annual,decimal,,"0.00 to 57,444.00",0.0,Hours saved annual.
+J_ai_portfolio,ai_use_cases,fte_capacity_released,decimal,,0.00 to 32.60,0.0,Full-time-equivalent capacity released by the solution.
+J_ai_portfolio,ai_use_case_kpis,kpi_id,string,PK,free text / identifier,0.0,Identifier (kpi).
+J_ai_portfolio,ai_use_case_kpis,use_case_id,string,FK->ai_use_cases,free text / identifier,0.0,Foreign key to ai_use_cases.
+J_ai_portfolio,ai_use_case_kpis,kpi_name,string,,"Average handling time (min), Backlog, CSAT, Classification minutes per document, Cost per transaction, Error rate, Exception resolution hours, False positive rate, Handling time, Integrity cases detected pre-publication,",0.0,Kpi name.
+J_ai_portfolio,ai_use_case_kpis,baseline_value,decimal,,4.15 to 222.80,0.0,Baseline value.
+J_ai_portfolio,ai_use_case_kpis,current_value,decimal,,4.97 to 209.38,33.0,Current value.
+J_ai_portfolio,ai_use_case_kpis,measured_date,date,,2025-01-02 00:00:00 to 2026-09-30 00:00:00,0.0,Date: measured date.
+J_ai_portfolio,ai_governance_reviews,review_id,string,PK,free text / identifier,0.0,Identifier (review).
+J_ai_portfolio,ai_governance_reviews,use_case_id,string,FK->ai_use_cases,free text / identifier,0.0,Foreign key to ai_use_cases.
+J_ai_portfolio,ai_governance_reviews,review_type,string,,"Data Protection Review, Model Risk Review, Privacy Impact Assessment, Secure-by-Design Review, Third-Party Risk Review, Threat Model",0.0,Review type.
+J_ai_portfolio,ai_governance_reviews,reviewer_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+J_ai_portfolio,ai_governance_reviews,submitted_at,timestamp,,2023-01-02 09:23:10 to 2026-09-20 00:00:00,0.0,Timestamp: submitted.
+J_ai_portfolio,ai_governance_reviews,completed_at,timestamp,,2023-01-14 17:25:27 to 2026-09-30 20:36:48,0.67,Timestamp: completed.
+J_ai_portfolio,ai_governance_reviews,status,string,,"Approved, Approved with conditions, In Review, Rejected, Returned for info",0.0,Lifecycle status of the record.
+J_ai_portfolio,ai_governance_reviews,findings_count,integer,,0.00 to 10.00,0.0,Count of findings.
+J_ai_portfolio,ai_governance_reviews,high_findings,integer,,0.00 to 4.00,0.0,High findings.
+J_ai_portfolio,projects,project_id,string,PK,free text / identifier,0.0,Identifier (project).
+J_ai_portfolio,projects,project_type,string,,"AI Use Case Delivery, Automation, BAU Enhancement, Client Implementation, Data Migration, Platform, Process Improvement",0.0,Project type.
+J_ai_portfolio,projects,use_case_id,string,FK->ai_use_cases,free text / identifier,72.35,Foreign key to ai_use_cases.
+J_ai_portfolio,projects,owner_team_id,string,FK->teams,free text / identifier,0.0,Foreign key to teams.
+J_ai_portfolio,projects,division_id,string,FK->divisions,"DIV01, DIV02, DIV03, DIV04, DIV05",0.0,Foreign key to divisions.
+J_ai_portfolio,projects,pm_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+J_ai_portfolio,projects,project_name,string,,free text / identifier,0.0,Project name.
+J_ai_portfolio,projects,start_date,date,,2022-01-01 00:00:00 to 2026-08-31 00:00:00,0.0,Date: start date.
+J_ai_portfolio,projects,planned_end_date,date,,2022-02-06 00:00:00 to 2028-06-01 00:00:00,0.0,Date: planned end date.
+J_ai_portfolio,projects,actual_end_date,date,,2022-02-06 00:00:00 to 2026-09-30 00:00:00,7.8,Date: actual end date.
+J_ai_portfolio,projects,status,string,,"Closed - Cancelled, Completed, In Progress, On Hold",0.0,Lifecycle status of the record.
+J_ai_portfolio,projects,budget_usd,decimal,,"1,600.00 to 1,112,300.00",0.0,Budget (USD).
+J_ai_portfolio,projects,actual_cost_usd,decimal,,"1,500.00 to 1,111,900.00",0.0,Actual cost (USD).
+J_ai_portfolio,projects,health,string,,"Amber, Green, Red",0.0,Health.
+J_ai_portfolio,project_members,project_member_id,string,PK,free text / identifier,0.0,Identifier (project member).
+J_ai_portfolio,project_members,project_id,string,FK->projects,free text / identifier,0.0,Foreign key to projects.
+J_ai_portfolio,project_members,employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+J_ai_portfolio,project_members,project_role,string,,"Analyst, Change Lead, Data Scientist, Designer, Developer, SME, Tester",0.0,Project role.
+J_ai_portfolio,project_members,allocation_pct,integer,,10.00 to 100.00,0.0,Allocation (%).
+J_ai_portfolio,project_tasks,task_id,string,PK,free text / identifier,0.0,Identifier (task).
+J_ai_portfolio,project_tasks,project_id,string,FK->projects,free text / identifier,0.0,Foreign key to projects.
+J_ai_portfolio,project_tasks,assignee_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+J_ai_portfolio,project_tasks,title,string,,free text / identifier,0.0,Title.
+J_ai_portfolio,project_tasks,created_at,timestamp,,2022-01-02 17:00:00 to 2027-11-03 11:00:00,0.0,Timestamp: created.
+J_ai_portfolio,project_tasks,due_date,date,,2022-01-13 00:00:00 to 2027-11-16 00:00:00,0.0,Date: due date.
+J_ai_portfolio,project_tasks,estimate_hours,decimal,,0.70 to 97.10,0.0,Estimate hours.
+J_ai_portfolio,project_tasks,completed_at,timestamp,,2022-01-07 18:40:16 to 2026-09-30 23:54:51,2.28,Timestamp: completed.
+J_ai_portfolio,project_tasks,status,string,,"Blocked, Done, In Progress, To Do",0.0,Lifecycle status of the record.
+J_ai_portfolio,project_tasks,actual_hours,decimal,,0.60 to 153.20,2.28,Actual hours.
+J_ai_portfolio,milestones,milestone_id,string,PK,free text / identifier,0.0,Identifier (milestone).
+J_ai_portfolio,milestones,project_id,string,FK->projects,free text / identifier,0.0,Foreign key to projects.
+J_ai_portfolio,milestones,milestone_name,string,,"Design sign-off, Go-live, Kick-off, UAT complete",0.0,Milestone name.
+J_ai_portfolio,milestones,planned_date,date,,2022-01-01 00:00:00 to 2028-06-01 00:00:00,0.0,Date: planned date.
+J_ai_portfolio,milestones,actual_date,date,,2022-01-03 00:00:00 to 2026-09-30 00:00:00,3.06,Date: actual date.
+J_ai_portfolio,milestones,status,string,,"Achieved, Pending",0.0,Lifecycle status of the record.
+J_ai_portfolio,project_risks,risk_id,string,PK,free text / identifier,0.0,Identifier (risk).
+J_ai_portfolio,project_risks,project_id,string,FK->projects,free text / identifier,0.0,Foreign key to projects.
+J_ai_portfolio,project_risks,category,string,,"Adoption, Budget, Data access, Data quality, Model performance, Resourcing, Scope, Security, Vendor",0.0,Category.
+J_ai_portfolio,project_risks,description,string,,"Accuracy below target on edge cases, Cloud consumption above forecast, Dependency on vendor API availability, Key SME has competing BAU priorities, Low user adoption expected in night-shift teams, Pending data access app",0.0,Description.
+J_ai_portfolio,project_risks,likelihood,integer,,1.00 to 5.00,0.0,Likelihood.
+J_ai_portfolio,project_risks,impact,integer,,1.00 to 5.00,0.0,Impact.
+J_ai_portfolio,project_risks,status,string,,"Closed, Mitigated, Open, Realised",0.0,Lifecycle status of the record.
+J_ai_portfolio,project_risks,owner_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+J_ai_portfolio,project_risks,raised_date,date,,2022-02-01 00:00:00 to 2026-09-30 00:00:00,0.0,Date: raised date.
+J_ai_portfolio,innovation_ideas,idea_id,string,PK,free text / identifier,0.0,Identifier (idea).
+J_ai_portfolio,innovation_ideas,submitted_by_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+J_ai_portfolio,innovation_ideas,team_id,string,FK->teams,free text / identifier,0.0,Foreign key to teams.
+J_ai_portfolio,innovation_ideas,title,string,,free text / identifier,0.0,Title.
+J_ai_portfolio,innovation_ideas,description,string,,free text / identifier,0.0,Description.
+J_ai_portfolio,innovation_ideas,submitted_at,timestamp,,2022-06-02 13:15:26 to 2026-09-30 00:00:00,0.0,Timestamp: submitted.
+J_ai_portfolio,innovation_ideas,votes,integer,,0.00 to 75.00,0.0,Votes.
+J_ai_portfolio,innovation_ideas,status,string,,"Accepted, Declined, Merged into use case, Submitted, Under Review",0.0,Lifecycle status of the record.
+J_ai_portfolio,innovation_ideas,linked_use_case_id,string,FK->ai_use_cases,free text / identifier,90.27,Foreign key to ai_use_cases.
+J_ai_portfolio,ai_usage_events,usage_event_id,string,PK,free text / identifier,0.0,Identifier (usage event).
+J_ai_portfolio,ai_usage_events,employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+J_ai_portfolio,ai_usage_events,tool,string,,"AP Exception Agent, Atlas Chat, CodePilot, DocAssist, Investigation Assistant, Knowledge RAG Assistant, REPH Copilot, XML Validator Agent",0.0,Tool.
+J_ai_portfolio,ai_usage_events,event_ts,timestamp,,2023-06-01 02:17:19 to 2026-09-30 00:00:00,0.0,Event timestamp (process-mining 'time:timestamp').
+J_ai_portfolio,ai_usage_events,use_case_id,string,FK->ai_use_cases,free text / identifier,36.48,Foreign key to ai_use_cases.
+J_ai_portfolio,ai_usage_events,model_id,string,FK->ai_models,free text / identifier,0.0,Foreign key to ai_models.
+J_ai_portfolio,ai_usage_events,task_type,string,,"Answer question, Brainstorm, Classify, Code generation, Draft email/response, Extract data, Generate SQL, Summarise document, Translate",0.0,Task type.
+J_ai_portfolio,ai_usage_events,prompt_tokens,integer,,"10.00 to 19,477.00",0.0,Prompt tokens.
+J_ai_portfolio,ai_usage_events,completion_tokens,integer,,"10.00 to 8,000.00",0.0,Completion tokens.
+J_ai_portfolio,ai_usage_events,latency_ms,integer,,"599.00 to 65,046.00",0.0,Latency ms.
+J_ai_portfolio,ai_usage_events,outcome,string,,"Accepted, Edited, Rejected",0.0,Final outcome / result of the record.
+J_ai_portfolio,ai_usage_events,prompt_id,string,,free text / identifier,100.0,Identifier (prompt).
+J_ai_portfolio,prompts_library,prompt_id,string,PK,free text / identifier,0.0,Identifier (prompt).
+J_ai_portfolio,prompts_library,author_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+J_ai_portfolio,prompts_library,task_type,string,,"Answer question, Classify, Draft email/response, Extract data, Generate SQL, Summarise document",0.0,Task type.
+J_ai_portfolio,prompts_library,use_case_id,string,FK->ai_use_cases,free text / identifier,49.4,Foreign key to ai_use_cases.
+J_ai_portfolio,prompts_library,title,string,,free text / identifier,0.0,Title.
+J_ai_portfolio,prompts_library,prompt_text,string,,free text / identifier,0.0,Prompt text.
+J_ai_portfolio,prompts_library,created_at,timestamp,,2023-08-10 07:50:05 to 2026-09-30 00:00:00,0.0,Timestamp: created.
+J_ai_portfolio,prompts_library,rating_avg,decimal,,1.77 to 5.00,0.0,Rating avg.
+J_ai_portfolio,prompts_library,times_used,integer,,"0.00 to 4,177.00",0.0,Times used.
+J_ai_portfolio,ai_feedback,ai_feedback_id,string,PK,free text / identifier,0.0,Identifier (ai feedback).
+J_ai_portfolio,ai_feedback,usage_event_id,string,FK->ai_usage_events,free text / identifier,0.0,Foreign key to ai_usage_events.
+J_ai_portfolio,ai_feedback,employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+J_ai_portfolio,ai_feedback,rating,integer,,1.00 to 5.00,0.0,Rating.
+J_ai_portfolio,ai_feedback,feedback_type,string,,"Neutral, Thumbs down, Thumbs up",0.0,Feedback type.
+J_ai_portfolio,ai_feedback,comment,string,,"Accurate summary, Good draft, minor edits, Hallucinated a policy, OK but needed edits, Partially correct, Saved me time, Slow response, Too generic, Very helpful, Wrong citation",59.84,Comment.
+J_ai_portfolio,ai_feedback,submitted_at,timestamp,,2023-06-01 17:59:51 to 2026-09-30 01:58:23,0.0,Timestamp: submitted.
+K_knowledge,knowledge_articles,article_id,string,PK,free text / identifier,0.0,Identifier (article).
+K_knowledge,knowledge_articles,article_type,string,,"FAQ, How-to, Policy, Reference, SOP, Troubleshooting",0.0,Article type.
+K_knowledge,knowledge_articles,topic_key,string,,free text / identifier,0.0,Topic key.
+K_knowledge,knowledge_articles,division_id,string,FK->divisions,"DIV01, DIV02, DIV03, DIV04, DIV05",0.0,Foreign key to divisions.
+K_knowledge,knowledge_articles,product_id,string,FK->products,free text / identifier,54.51,Foreign key to products.
+K_knowledge,knowledge_articles,app_id,string,FK->applications,free text / identifier,0.0,Foreign key to applications.
+K_knowledge,knowledge_articles,title,string,,free text / identifier,0.0,Title.
+K_knowledge,knowledge_articles,owner_team_id,string,FK->teams,free text / identifier,0.0,Foreign key to teams.
+K_knowledge,knowledge_articles,author_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+K_knowledge,knowledge_articles,created_at,timestamp,,2019-01-02 11:17:33 to 2026-09-15 00:00:00,0.0,Timestamp: created.
+K_knowledge,knowledge_articles,last_reviewed_at,timestamp,,2019-01-25 23:51:02 to 2026-09-30 20:57:48,0.0,Timestamp: last reviewed.
+K_knowledge,knowledge_articles,status,string,,"Archived, Draft, Published",0.0,Lifecycle status of the record.
+K_knowledge,knowledge_articles,version,integer,,1.00 to 6.00,0.0,Version.
+K_knowledge,knowledge_articles,body,string,,free text / identifier,0.0,Body.
+K_knowledge,knowledge_articles,view_count,integer,,"1.00 to 23,936.00",0.0,Count of view.
+K_knowledge,knowledge_articles,helpful_votes,integer,,"0.00 to 1,501.00",0.0,Helpful votes.
+K_knowledge,knowledge_articles,tags,string,,free text / identifier,0.0,Tags.
+K_knowledge,knowledge_article_versions,article_version_id,string,PK,free text / identifier,0.0,Identifier (article version).
+K_knowledge,knowledge_article_versions,article_id,string,FK->knowledge_articles,free text / identifier,0.0,Foreign key to knowledge_articles.
+K_knowledge,knowledge_article_versions,version_no,integer,,1.00 to 6.00,0.0,Version no.
+K_knowledge,knowledge_article_versions,edited_at,timestamp,,2019-01-02 11:17:33 to 2026-09-30 20:57:48,0.0,Timestamp: edited.
+K_knowledge,knowledge_article_versions,edited_by_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+K_knowledge,knowledge_article_versions,change_summary,string,,"Added escalation path, Fixed screenshots, Initial version, Minor wording changes, Policy alignment, Updated for new release, Updated steps",0.0,Change summary.
+K_knowledge,sops,sop_id,string,PK,free text / identifier,0.0,Identifier (sop).
+K_knowledge,sops,article_id,string,FK->knowledge_articles,free text / identifier,0.0,Foreign key to knowledge_articles.
+K_knowledge,sops,process_id,string,FK->process_definitions,free text / identifier,0.0,Foreign key to process_definitions.
+K_knowledge,sops,sop_title,string,,free text / identifier,0.0,Sop title.
+K_knowledge,sops,version,integer,,1.00 to 6.00,0.0,Version.
+K_knowledge,sops,effective_date,date,,2019-01-04 00:00:00 to 2026-09-15 00:00:00,0.0,Date: effective date.
+K_knowledge,sops,review_due_date,date,,2020-04-16 00:00:00 to 2027-09-28 00:00:00,0.0,Date: review due date.
+K_knowledge,sops,is_current,boolean,,"False, True",0.0,Flag: current.
+K_knowledge,sops,owner_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+K_knowledge,documents,document_id,string,PK,free text / identifier,0.0,Identifier (document).
+K_knowledge,documents,project_id,string,FK->projects,free text / identifier,0.0,Foreign key to projects.
+K_knowledge,documents,doc_type,string,,"Architecture Decision Record, Benefits Realisation Report, Closeout Report, Decision Log, Project Charter, Requirements, Status Report",0.0,Doc type.
+K_knowledge,documents,author_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+K_knowledge,documents,created_at,timestamp,,2022-01-09 13:24:50 to 2026-09-30 13:37:39,0.0,Timestamp: created.
+K_knowledge,documents,title,string,,free text / identifier,0.0,Title.
+K_knowledge,documents,body,string,,free text / identifier,0.0,Body.
+K_knowledge,meetings,meeting_id,string,PK,free text / identifier,0.0,Identifier (meeting).
+K_knowledge,meetings,project_id,string,FK->projects,free text / identifier,40.25,Foreign key to projects.
+K_knowledge,meetings,team_id,string,FK->teams,free text / identifier,0.0,Foreign key to teams.
+K_knowledge,meetings,organizer_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+K_knowledge,meetings,meeting_type,string,,"1:1 (aggregate), Design review, Retrospective, Status sync, Steering committee, Team huddle, Town hall, UAT review, Weekly sync",0.0,Meeting type.
+K_knowledge,meetings,title,string,,free text / identifier,0.0,Title.
+K_knowledge,meetings,start_ts,timestamp,,2022-01-01 00:00:00 to 2026-09-30 00:00:00,0.0,Timestamp: start.
+K_knowledge,meetings,duration_min,integer,,15.00 to 90.00,0.0,Duration min (minutes).
+K_knowledge,meetings,attendee_count,integer,,2.00 to 58.00,0.0,Count of attendee.
+K_knowledge,meetings,transcript_summary,string,,free text / identifier,0.0,Transcript summary.
+K_knowledge,action_items,action_item_id,string,PK,free text / identifier,0.0,Identifier (action item).
+K_knowledge,action_items,meeting_id,string,FK->meetings,free text / identifier,0.0,Foreign key to meetings.
+K_knowledge,action_items,owner_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+K_knowledge,action_items,description,string,,free text / identifier,0.0,Description.
+K_knowledge,action_items,due_date,date,,2022-01-02 00:00:00 to 2026-10-18 00:00:00,0.0,Date: due date.
+K_knowledge,action_items,completed_at,timestamp,,2022-01-03 14:58:47 to 2026-09-30 23:48:02,15.41,Timestamp: completed.
+K_knowledge,action_items,status,string,,"Done, Open, Overdue",0.0,Lifecycle status of the record.
+K_knowledge,chat_channels,channel_id,string,PK,free text / identifier,0.0,Identifier (channel).
+K_knowledge,chat_channels,team_id,string,FK->teams,free text / identifier,0.0,Foreign key to teams.
+K_knowledge,chat_channels,project_id,string,FK->projects,free text / identifier,30.08,Foreign key to projects.
+K_knowledge,chat_channels,channel_name,string,,free text / identifier,0.0,Channel name.
+K_knowledge,chat_channels,created_at,timestamp,,2021-01-02 13:59:08 to 2021-12-31 00:00:00,0.0,Timestamp: created.
+K_knowledge,chat_messages,message_id,string,PK,free text / identifier,0.0,Identifier (message).
+K_knowledge,chat_messages,channel_id,string,FK->chat_channels,free text / identifier,0.0,Foreign key to chat_channels.
+K_knowledge,chat_messages,sender_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+K_knowledge,chat_messages,sent_at,timestamp,,2022-01-01 00:00:00 to 2026-09-30 00:00:00,0.0,Timestamp: sent.
+K_knowledge,chat_messages,message_text,string,,free text / identifier,0.0,Message text.
+K_knowledge,chat_messages,is_taglish,boolean,,"False, True",0.0,True if the message mixes Tagalog and English.
+K_knowledge,chat_messages,reply_to_message_id,string,FK->chat_messages,free text / identifier,70.15,Foreign key to chat_messages.
+K_knowledge,chat_messages,mentions_count,integer,,0.00 to 4.00,0.0,Count of mentions.
+K_knowledge,emails,email_id,string,PK,free text / identifier,0.0,Identifier (email).
+K_knowledge,emails,sender_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+K_knowledge,emails,recipient_employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+K_knowledge,emails,cc_count,integer,,0.00 to 8.00,0.0,Count of cc.
+K_knowledge,emails,sent_at,timestamp,,2022-01-01 00:00:00 to 2026-09-30 00:00:00,0.0,Timestamp: sent.
+K_knowledge,emails,subject,string,,free text / identifier,0.0,Subject.
+K_knowledge,emails,body,string,,free text / identifier,0.0,Body.
+K_knowledge,emails,related_case_id,string,FK->support_cases,free text / identifier,80.01,Foreign key to support_cases.
+K_knowledge,emails,thread_id,string,,free text / identifier,0.0,Identifier (thread).
+K_knowledge,emails,has_attachment,boolean,,"False, True",0.0,Flag: attachment.
+K_knowledge,search_logs,search_id,string,PK,free text / identifier,0.0,Identifier (search).
+K_knowledge,search_logs,employee_id,string,FK->employees,free text / identifier,0.0,Foreign key to employees.
+K_knowledge,search_logs,searched_at,timestamp,,2022-01-01 00:00:00 to 2026-09-30 00:00:00,0.0,Timestamp: searched.
+K_knowledge,search_logs,query_text,string,,free text / identifier,0.0,Query text.
+K_knowledge,search_logs,results_count,integer,,0.00 to 101.00,0.0,Number of search results returned (0 = knowledge gap).
+K_knowledge,search_logs,clicked_article_id,string,FK->knowledge_articles,free text / identifier,56.21,Foreign key to knowledge_articles.
+K_knowledge,search_logs,source,string,,"Intranet, KB Portal, Knowledge RAG Assistant, REPH Copilot",0.0,Source.
