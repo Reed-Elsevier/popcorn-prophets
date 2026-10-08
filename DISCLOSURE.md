@@ -6,7 +6,7 @@ Fill in as you build. Required for submission (mechanics §9, §11).
 - GitHub Copilot Chat in VS Code (Claude model) + skills in `.agents/`
 
 ## AI models / APIs
-- Vercel AI SDK via OpenRouter (`openrouter/free`; provider/model switchable by env). Confirm approval with REPH.
+- Vercel AI SDK via AWS Bedrock (Claude; provider/model switchable by env). Confirm approval with REPH.
 
 ## Mock, simulated or manual parts
 -

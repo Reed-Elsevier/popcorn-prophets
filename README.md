@@ -20,7 +20,7 @@ Rules: [`docs/mechanics.md`](docs/mechanics.md) · Company context: [`docs/relx-
 git clone https://github.com/andrianllmm/reph-hackathon.git
 cd reph-hackathon
 
-cp .env.example .env     # then set OPENROUTER_API_KEY (ask a teammate)
+cp .env.example .env     # then set AWS_BEARER_TOKEN_BEDROCK (ask a teammate)
 pnpm install
 pnpm db:push             # create tables in local SQLite file (app.db)
 pnpm dev                 # http://localhost:3000
@@ -56,7 +56,7 @@ Set up this machine for this repo by following docs/setup.md. Report only failur
 | Wrong Node version               | `fnm use` / `nvm use` (reads `.nvmrc`)                                                       |
 | `pnpm` not found                 | `corepack enable`                                                                            |
 | `db:push` fails                  | Check `DATABASE_URL` in `.env` (default `file:./app.db`); `pnpm db:reset` wipes the local DB |
-| AI calls fail                    | Check `OPENROUTER_API_KEY` (or `AI_API_KEY` + `AI_BASE_URL` for `openai-compatible`)         |
+| AI calls fail                    | Check `AWS_BEARER_TOKEN_BEDROCK` (or `AI_API_KEY` + `AI_BASE_URL` for `openai-compatible`)         |
 
 ## Tech stack
 
@@ -69,7 +69,7 @@ Set up this machine for this repo by following docs/setup.md. Report only failur
 | Database         | PostgreSQL + Drizzle ORM (RDS optional; Docker Compose locally)           |
 | Validation       | Zod                                                                       |
 | Auth             | Better Auth (optional, off by default)                                    |
-| AI               | Vercel AI SDK, provider-switchable via env (OpenRouter / OpenAI-compatible) |
+| AI               | Vercel AI SDK, provider-switchable via env (Bedrock / OpenAI-compatible) |
 | Vector search    | pgvector (optional)                                                       |
 | Hosting          | AWS EC2 + Docker (Vercel + Supabase for quick previews only)              |
 | Tooling          | Prettier, ESLint, GitHub Actions (lint + build on PRs)                    |
@@ -81,9 +81,9 @@ Defined in `.env.example`, validated in `src/env.ts` (missing values never crash
 | Variable                                  | Purpose                                                         |
 | ----------------------------------------- | --------------------------------------------------------------- |
 | `DATABASE_URL`                            | Postgres connection (default matches `docker-compose.yml`)      |
-| `AI_PROVIDER`                             | `openrouter` (default) or `openai-compatible`                   |
-| `AI_MODEL`                                | Model id for the provider (default `openrouter/free`)           |
-| `OPENROUTER_API_KEY`                      | Key for `openrouter`                                            |
+| `AI_PROVIDER`                             | `bedrock` (default) or `openai-compatible`                   |
+| `AI_MODEL`                                | Model id for the provider (default Claude Sonnet 4 on Bedrock)           |
+| `AWS_BEARER_TOKEN_BEDROCK`                | Bedrock API key (`AWS_REGION` sets region, default us-east-1)  |
 | `AI_API_KEY`, `AI_BASE_URL`               | Key and endpoint for `openai-compatible`                        |
 | `AI_FALLBACK_MODEL` / `AI_TIMEOUT_MS`       | Retry model on failure; per-attempt timeout (default 30000)     |
 | `AI_EMBEDDING_MODEL`                      | Only for vector search                                          |
