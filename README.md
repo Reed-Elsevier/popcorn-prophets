@@ -1,6 +1,6 @@
 # reph-hackathon
 
-Popcorn Prophets entry for the REPH AI Summit 2026 Academe Hackathon (onsite 5h build sprint), built from `popcorn-prophets/reph-26-template`. Next.js + Postgres + AI SDK, wired up so the team can start building the real flow immediately.
+Popcorn Prophets entry for the REPH AI Summit 2026 Academe Hackathon (onsite 5h build sprint), built from `popcorn-prophets/reph-26-template`. Next.js + SQLite + AI SDK, wired up so the team can start building the real flow immediately.
 
 Rules: [`docs/mechanics.md`](docs/mechanics.md) · Company context: [`docs/relx-reph.md`](docs/relx-reph.md) · Team conventions: [`AGENTS.md`](AGENTS.md)
 
@@ -13,7 +13,6 @@ Rules: [`docs/mechanics.md`](docs/mechanics.md) · Company context: [`docs/relx-
 | Git + [GitHub CLI](https://cli.github.com) | any (`gh auth login` once)       |
 | Node.js                                  | 24+ (see `.nvmrc`)               |
 | pnpm                                     | via `corepack enable`            |
-| Docker (with Compose)                    | any recent                       |
 
 ### Install and run
 
@@ -22,9 +21,8 @@ git clone https://github.com/andrianllmm/reph-hackathon.git
 cd reph-hackathon
 
 cp .env.example .env     # then set OPENROUTER_API_KEY (ask a teammate)
-docker compose up -d db  # local Postgres (pgvector) on :5432
 pnpm install
-pnpm db:push             # create tables
+pnpm db:push             # create tables in local SQLite file (app.db)
 pnpm dev                 # http://localhost:3000
 ```
 
@@ -57,9 +55,7 @@ Set up this machine for this repo by following docs/setup.md. Report only failur
 | -------------------------------- | -------------------------------------------------------------------------------------------- |
 | Wrong Node version               | `fnm use` / `nvm use` (reads `.nvmrc`)                                                       |
 | `pnpm` not found                 | `corepack enable`                                                                            |
-| Port 5432 already in use         | Stop the other Postgres, or change the port in `docker-compose.yml` and `DATABASE_URL`       |
-| `db:push` can't connect          | `docker compose ps` should show `db` running; check `DATABASE_URL` in `.env`                 |
-| No Docker or Docker blocked      | Point `DATABASE_URL` at a remote Postgres/RDS instance                                       |
+| `db:push` fails                  | Check `DATABASE_URL` in `.env` (default `file:./app.db`); `pnpm db:reset` wipes the local DB |
 | AI calls fail                    | Check `OPENROUTER_API_KEY` (or `AI_API_KEY` + `AI_BASE_URL` for `openai-compatible`)         |
 
 ## Tech stack

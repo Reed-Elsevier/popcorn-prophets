@@ -1,25 +1,22 @@
-// Wipe the public schema and re-push the Drizzle schema. Local DB only unless --remote.
+// Delete the local SQLite file and re-push the Drizzle schema.
 // Usage: pnpm db:reset
 import { spawnSync } from "node:child_process";
-import postgres from "postgres";
+import { rmSync } from "node:fs";
 
 try {
   process.loadEnvFile();
 } catch {}
 
-const url = process.env.DATABASE_URL ?? "postgres://app:app@localhost:5432/app";
-const host = new URL(url).hostname;
-if (!["localhost", "127.0.0.1", "db"].includes(host) && !process.argv.includes("--remote")) {
-  console.error(`Refusing to reset non-local database "${host}". Pass --remote to override.`);
+const url = process.env.DATABASE_URL ?? "file:./app.db";
+if (!url.startsWith("file:")) {
+  console.error(`Refusing to reset non-file database "${url}".`);
   process.exit(1);
 }
 
-const sql = postgres(url);
-await sql.unsafe(
-  "drop schema public cascade; create schema public; create extension if not exists vector;",
-);
-await sql.end();
-console.log(`Reset ${host}. Pushing schema...`);
+const path = url.slice("file:".length);
+for (const suffix of ["", "-wal", "-shm", "-journal"]) rmSync(path + suffix, { force: true });
+console.log(`Reset ${path}. Pushing schema...`);
 process.exit(
-  spawnSync("pnpm", ["exec", "drizzle-kit", "push", "--force"], { stdio: "inherit" }).status ?? 1,
+  spawnSync("pnpm", ["exec", "drizzle-kit", "push", "--force"], { stdio: "inherit", shell: true })
+    .status ?? 1,
 );

@@ -1,5 +1,5 @@
 // Preflight for a fresh machine. Usage: pnpm doctor [--ai]  (--ai makes one tiny model call)
-import postgres from "postgres";
+import { createClient } from "@libsql/client";
 
 try {
   process.loadEnvFile();
@@ -18,18 +18,15 @@ major >= 24
   ? ok(`node ${process.versions.node}`)
   : bad(`node ${process.versions.node} (need 24, see .nvmrc)`);
 
-const url = process.env.DATABASE_URL ?? "postgres://app:app@localhost:5432/app";
-const sql = postgres(url, { connect_timeout: 5 });
+const url = process.env.DATABASE_URL ?? "file:./app.db";
+const client = createClient({ url });
 try {
-  await sql`select 1`;
-  ok("database reachable");
-  const [{ has }] =
-    await sql`select exists(select 1 from pg_extension where extname = 'vector') as has`;
-  has ? ok("pgvector enabled") : warn("pgvector not enabled (only needed for vector search)");
+  await client.execute("select 1");
+  ok(`database reachable (${url})`);
 } catch (e) {
-  bad(`database unreachable: ${e.code ?? e.message} (docker compose up -d db)`);
+  bad(`database unreachable: ${e.code ?? e.message}`);
 } finally {
-  await sql.end();
+  client.close();
 }
 
 const provider = process.env.AI_PROVIDER ?? "openrouter";

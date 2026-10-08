@@ -12,6 +12,6 @@ export default defineConfig({
     ...(process.env.ENABLE_AUTH === "true" ? ["./src/modules/auth/auth-schema.ts"] : []),
   ],
   out: "./drizzle",
-  dialect: "postgresql",
-  dbCredentials: { url: process.env.DATABASE_URL! },
+  dialect: "sqlite",
+  dbCredentials: { url: process.env.DATABASE_URL ?? "file:./app.db" },
 });

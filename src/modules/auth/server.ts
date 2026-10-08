@@ -9,7 +9,7 @@ import * as schema from "./auth-schema";
 // Add plugins/social providers here, then re-run `pnpm auth:generate`.
 function create() {
   return betterAuth({
-    database: drizzleAdapter(db, { provider: "pg", schema }),
+    database: drizzleAdapter(db, { provider: "sqlite", schema }),
     emailAndPassword: { enabled: true },
     session: { cookieCache: { enabled: true, maxAge: 5 * 60 } },
     plugins: [nextCookies()], // keep last
