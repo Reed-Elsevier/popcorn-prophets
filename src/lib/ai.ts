@@ -6,8 +6,11 @@ import {
   embedMany,
   generateText,
   Output,
+  stepCountIs,
   type EmbeddingModel,
   type LanguageModel,
+  type ModelMessage,
+  type ToolSet,
 } from "ai";
 import type { z } from "zod";
 import { env } from "@/env";
@@ -51,6 +54,34 @@ export async function generateStructured<T extends z.ZodType>(
         abortSignal: AbortSignal.timeout(env.AI_TIMEOUT_MS),
       });
       return output as z.infer<T>;
+    } catch (err) {
+      lastError = err;
+      console.warn(`[ai] ${id} failed:`, err instanceof Error ? err.message : err);
+    }
+  }
+  throw lastError;
+}
+
+/** Tool-calling text generation (multi-step). Same model/timeout/fallback policy as generateStructured. */
+export async function generateWithTools(opts: {
+  system: string;
+  messages: ModelMessage[];
+  tools: ToolSet;
+  maxSteps?: number;
+}) {
+  const ids = [env.AI_MODEL, env.AI_FALLBACK_MODEL].filter((id): id is string => !!id);
+  let lastError: unknown;
+  for (const id of ids) {
+    try {
+      return await generateText({
+        model: getModel(id),
+        system: opts.system,
+        messages: opts.messages,
+        tools: opts.tools,
+        stopWhen: stepCountIs(opts.maxSteps ?? 6),
+        maxRetries: 6, // Bedrock throttles shared keys; backoff is exponential
+        abortSignal: AbortSignal.timeout(env.AI_TIMEOUT_MS * 8),
+      });
     } catch (err) {
       lastError = err;
       console.warn(`[ai] ${id} failed:`, err instanceof Error ? err.message : err);

@@ -3,6 +3,7 @@ import { AS_OF } from "@/modules/signals/score";
 
 const nav = [
   { href: "/", label: "Queue" },
+  { href: "/ask", label: "Ask" },
   { href: "/upload", label: "Upload account" },
   { href: "/reliability", label: "Reliability" },
 ];
