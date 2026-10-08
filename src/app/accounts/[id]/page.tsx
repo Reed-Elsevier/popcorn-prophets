@@ -1,9 +1,12 @@
 import Link from "next/link";
+import { Suspense } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { ScoreBadge } from "@/modules/signals/score-badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BriefPanel } from "@/modules/ai-brief/components/brief-panel";
+import { BriefSection } from "@/modules/ai-brief/components/brief-card";
+import { CaseTable } from "@/modules/queue/components/case-table";
 import { UsageChart } from "@/modules/queue/components/usage-chart";
 import { getAccount } from "@/modules/queue/queries";
 
@@ -31,7 +34,19 @@ export default async function AccountPage({ params }: PageProps<"/accounts/[id]"
         </p>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid items-start gap-6 lg:grid-cols-3">
+        <div className="space-y-6 lg:col-span-2">
+          <Suspense
+            fallback={
+              <div className="space-y-3">
+                <Skeleton className="h-64 w-full" />
+                <Skeleton className="h-64 w-full" />
+              </div>
+            }
+          >
+            <BriefSection customerId={c.customerId} state={h.state} />
+          </Suspense>
+        </div>
         <div className="space-y-6">
           <Card>
             <CardHeader>
@@ -74,14 +89,6 @@ export default async function AccountPage({ params }: PageProps<"/accounts/[id]"
           </Card>
         </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Brief and outreach</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <BriefPanel customerId={c.customerId} state={h.state} />
-          </CardContent>
-        </Card>
       </div>
 
       <Card>
@@ -89,41 +96,7 @@ export default async function AccountPage({ params }: PageProps<"/accounts/[id]"
           <CardTitle>Case timeline</CardTitle>
         </CardHeader>
         <CardContent className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead className="text-muted-foreground text-left text-xs uppercase">
-              <tr>
-                <th className="p-2">Case</th>
-                <th className="p-2">Date</th>
-                <th className="p-2">Category</th>
-                <th className="p-2">Subject</th>
-                <th className="p-2">Priority</th>
-                <th className="p-2">Status</th>
-                <th className="p-2">CSAT</th>
-                <th className="p-2">Esc.</th>
-              </tr>
-            </thead>
-            <tbody>
-              {a.cases.map((k) => (
-                <tr key={k.caseId} id={`case-${k.caseId}`} className="target:bg-accent border-t">
-                  <td className="p-2 font-mono text-xs">{k.caseId}</td>
-                  <td className="p-2 tabular-nums">{k.createdAt.slice(0, 10)}</td>
-                  <td className="p-2">{k.category}</td>
-                  <td className="p-2">{k.subject}</td>
-                  <td className="p-2">{k.priority}</td>
-                  <td className="p-2">{k.status}</td>
-                  <td className="p-2">{k.csat ?? "—"}</td>
-                  <td className="p-2">{k.escalated ? "Yes" : ""}</td>
-                </tr>
-              ))}
-              {a.cases.length === 0 && (
-                <tr>
-                  <td colSpan={8} className="text-muted-foreground p-4 text-center">
-                    No cases in the last 12 months.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+          <CaseTable rows={a.cases} />
         </CardContent>
       </Card>
     </main>

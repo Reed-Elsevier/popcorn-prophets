@@ -1,3 +1,5 @@
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+
 const rows = [
   ["Usage drop >25% alone", "30% of customers flagged; precision 3%, lift 1.9x"],
   ["Escalated case in last 90 days", "precision 16%, recall 56%, lift 10x"],
@@ -15,16 +17,16 @@ export default function ReliabilityPage() {
         Precomputed offline backtest (monthly as-of dates 2024-04 to 2026-06, label: churn within 90 days, base
         rate 1.6%). Static, not recomputed live.
       </p>
-      <table className="w-full text-sm">
-        <tbody>
+      <Table>
+        <TableBody>
           {rows.map(([k, v]) => (
-            <tr key={k} className="border-t">
-              <td className="p-2 font-medium">{k}</td>
-              <td className="p-2">{v}</td>
-            </tr>
+            <TableRow key={k}>
+              <TableCell className="font-medium">{k}</TableCell>
+              <TableCell>{v}</TableCell>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
       <h2 className="pt-2 font-semibold">Caveats</h2>
       <ul className="list-disc space-y-1 pl-5 text-sm">
         <li>Thresholds were chosen after seeing the data (in-sample); the data is synthetic.</li>
