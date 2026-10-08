@@ -9,7 +9,10 @@ Fill in as you build. Required for submission (mechanics §9, §11).
 - Vercel AI SDK via AWS Bedrock (Claude; provider/model switchable by env). Confirm approval with REPH.
 
 ## Mock, simulated or manual parts
--
+- Brief generation falls back to a deterministic template (labelled "Template fallback" in the UI) when the AI call fails or no AI credentials are set.
+- Upload page (skeleton) scores pasted JSON signals only; no LLM extraction yet.
+- Reliability page shows static backtest numbers from an offline pandas analysis (PRD section 2), not recomputed live.
+- ARR sums `annual_value_usd` without currency conversion (skeleton).
 
 ## Additional / generated data (approved only)
 -

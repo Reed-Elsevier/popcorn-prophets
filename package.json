@@ -12,6 +12,7 @@
     "doctor": "node scripts/doctor.mjs",
     "data:profile": "node scripts/profile-data.mjs",
     "db:reset": "node scripts/db-reset.mjs",
+    "db:load": "node scripts/load.ts",
     "db:push": "drizzle-kit push",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",

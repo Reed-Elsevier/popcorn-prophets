@@ -117,6 +117,21 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* REPH / RELX theme: orange primary, warm neutrals */
+:root {
+  --primary: oklch(0.7 0.19 50);
+  --primary-foreground: oklch(0.2 0.03 50);
+  --ring: oklch(0.7 0.19 50);
+  --accent: oklch(0.96 0.03 65);
+  --accent-foreground: oklch(0.35 0.1 50);
+  --secondary: oklch(0.96 0.015 70);
+  --muted: oklch(0.965 0.012 70);
+  --chart-1: oklch(0.7 0.19 50);
+  --chart-2: oklch(0.55 0.15 40);
+  --chart-3: oklch(0.8 0.15 80);
+  --sidebar-primary: oklch(0.7 0.19 50);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

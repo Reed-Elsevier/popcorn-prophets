@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "REPH 26",
-  description: "REPH AI Summit 2026 Academe Hackathon",
+  title: "Renewal Rescue Desk",
+  description: "Ranked work queue of at-risk renewals for customer success managers",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
