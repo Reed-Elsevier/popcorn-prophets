@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 import { MessageSquareIcon } from "lucide-react";
 import {
   Conversation,
@@ -74,7 +76,8 @@ const SUGGESTIONS = [
   "Review my riskiest renewal and propose a decision",
 ];
 
-export function Chat() {
+export function Chat({ className }: { className?: string }) {
+  const pathname = usePathname();
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [err, setErr] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
@@ -85,14 +88,18 @@ export function Chat() {
     setMsgs(next);
     setErr(null);
     setPending(true);
-    const r = await askPortfolio(next.map(({ role, content }) => ({ role, content })));
+    const viewing = pathname.match(/^\/accounts\/([^/]+)/)?.[1];
+    const r = await askPortfolio(
+      next.map(({ role, content }) => ({ role, content })),
+      viewing ? decodeURIComponent(viewing) : undefined,
+    );
     setPending(false);
     if ("error" in r) return setErr(r.error);
     setMsgs([...next, { role: "assistant", content: r.text, accounts: r.accounts, tools: r.tools, proposals: r.proposals }]);
   };
 
   return (
-    <div className="flex h-[70vh] flex-col gap-3">
+    <div className={cn("flex h-[70vh] flex-col gap-3", className)}>
       <Conversation className="rounded-lg border">
         <ConversationContent>
           {msgs.length === 0 && (

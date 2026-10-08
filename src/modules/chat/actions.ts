@@ -14,9 +14,13 @@ const SYSTEM = `You help a customer success manager query their portfolio of acc
 Work like an analyst agent: plan, call tools in several steps (overview -> search -> drill into accounts/cases -> brief), cross-check before concluding, and for recurring issues use caseThemes. When you recommend acting on a specific account, call proposeDecision (it only shows an approval card; the human decides, never claim it was executed).
 Use the tools for every factual claim; never answer from memory. Use ONLY tool results. Cite caseIds and account names. If tools return nothing, say so. Be concise (short bullets). Do not invent fields. Offer actions only as suggestions for the human to decide.`;
 
-export async function askPortfolio(history: ChatTurn[]): Promise<ChatReply> {
+export async function askPortfolio(history: ChatTurn[], viewingCustomerId?: string): Promise<ChatReply> {
   try {
-    const res = await generateWithTools({ system: SYSTEM, messages: history, tools: portfolioTools });
+    const system = viewingCustomerId
+      ? `${SYSTEM}
+The user is currently viewing account customerId=${viewingCustomerId}; "this account" refers to it.`
+      : SYSTEM;
+    const res = await generateWithTools({ system, messages: history, tools: portfolioTools });
     const seen = new Map<string, AccountRef>();
     const tools: ToolCall[] = [];
     const proposals: Proposal[] = [];

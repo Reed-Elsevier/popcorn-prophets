@@ -3,6 +3,7 @@ import { Geist_Mono, Newsreader } from "next/font/google";
 import { AppHeader } from "@/components/app-header";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ChatWidget } from "@/modules/chat/components/chat-widget";
 import "./globals.css";
 
 const serif = Newsreader({
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <TooltipProvider>
           <AppHeader />
           {children}
+          <ChatWidget />
         </TooltipProvider>
         <Toaster />
       </body>
