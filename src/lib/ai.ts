@@ -1,6 +1,7 @@
 import "server-only";
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 import { createAmazonBedrock } from "@ai-sdk/amazon-bedrock";
+import { fromNodeProviderChain } from "@aws-sdk/credential-providers";
 import {
   embed,
   embedMany,
@@ -16,7 +17,11 @@ import type { z } from "zod";
 import { env } from "@/env";
 
 function bedrock() {
-  return createAmazonBedrock({ apiKey: env.AWS_BEARER_TOKEN_BEDROCK, region: env.AWS_REGION });
+  return createAmazonBedrock({
+    apiKey: env.AWS_BEARER_TOKEN_BEDROCK || undefined,
+    region: env.AWS_REGION,
+    credentialProvider: fromNodeProviderChain(),
+  });
 }
 
 /** Provider is switched by AI_PROVIDER / AI_MODEL. All AI calls go through this module. */
