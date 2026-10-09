@@ -1,0 +1,6 @@
+# Store dataset files in Git LFS.
+data/**/*.csv filter=lfs diff=lfs merge=lfs -text
+data/**/*.parquet filter=lfs diff=lfs merge=lfs -text
+
+# Keep documentation and its metadata in regular Git.
+data/**/_docs/** !filter !diff !merge !text
