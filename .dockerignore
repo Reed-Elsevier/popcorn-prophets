@@ -5,6 +5,8 @@ node_modules
 .agents
 .claude
 data
+*.db
+*.db-*
 docs
 .env
 .env.*

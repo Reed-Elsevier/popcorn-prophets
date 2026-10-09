@@ -1,5 +1,5 @@
 // Load F_customer CSVs into SQLite and precompute account_health. Usage: pnpm db:load
-// Run after `pnpm db:reset`. Local only; data/ is confidential and never leaves the machine.
+// Run after schema setup. Only load supplied files approved for this environment.
 import { createClient } from "@libsql/client";
 import { readFileSync } from "node:fs";
 import Papa from "papaparse";
@@ -10,9 +10,10 @@ try {
 } catch {}
 
 const db = createClient({ url: process.env.DATABASE_URL ?? "file:./app.db" });
+const dataDir = process.env.DATA_DIR ?? "data/F_customer";
 type R = Record<string, string>;
 const read = (f: string) =>
-  Papa.parse<R>(readFileSync(`data/F_customer/${f}.csv`, "utf8"), {
+  Papa.parse<R>(readFileSync(`${dataDir}/${f}.csv`, "utf8"), {
     header: true,
     skipEmptyLines: true,
   }).data;
@@ -143,3 +144,4 @@ await insert(
   health,
 );
 console.log("done.");
+db.close();
