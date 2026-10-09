@@ -1,6 +1,6 @@
 import "server-only";
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
-import { createOpenRouter } from "@openrouter/ai-sdk-provider";
+import { createAmazonBedrock } from "@ai-sdk/amazon-bedrock";
 import {
   embed,
   embedMany,
@@ -12,6 +12,10 @@ import {
 import type { z } from "zod";
 import { env } from "@/env";
 
+function bedrock() {
+  return createAmazonBedrock({ apiKey: env.AWS_BEARER_TOKEN_BEDROCK, region: env.AWS_REGION });
+}
+
 /** Provider is switched by AI_PROVIDER / AI_MODEL. All AI calls go through this module. */
 export function getModel(id: string = env.AI_MODEL): LanguageModel {
   switch (env.AI_PROVIDER) {
@@ -22,7 +26,7 @@ export function getModel(id: string = env.AI_MODEL): LanguageModel {
         apiKey: env.AI_API_KEY,
       }).chatModel(id);
     default:
-      return createOpenRouter({ apiKey: env.OPENROUTER_API_KEY }).chat(id);
+      return bedrock()(id);
   }
 }
 
@@ -64,7 +68,7 @@ function getEmbeddingModel(): EmbeddingModel {
       baseURL: env.AI_BASE_URL ?? "",
       apiKey: env.AI_API_KEY,
     }).embeddingModel(id);
-  return createOpenRouter({ apiKey: env.OPENROUTER_API_KEY }).textEmbeddingModel(id);
+  return bedrock().embedding(id);
 }
 
 /** Embed one string (for pgvector queries). */
